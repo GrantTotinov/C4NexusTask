@@ -1,20 +1,47 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import Header from './components/Header/Header'
 import ProductGrid from './components/ProductGrid/ProductGrid'
-import type { Category } from './types'
+import FilterPanel from './components/FilterPanel/FilterPanel'
+import type { Category, FilterState } from './types'
 import { products, categories } from './data/products'
 
 function App() {
   const [activeCategory, setActiveCategory] = useState<Category['slug']>('bags')
+  const [filters, setFilters] = useState<FilterState>({
+    selectedColors: [],
+    priceRange: { min: 0, max: 1000 },
+  })
 
   const handleCategoryChange = (slug: Category['slug']) => {
     setActiveCategory(slug)
   }
 
+  const handleFilterChange = useCallback((newFilters: FilterState) => {
+    setFilters(newFilters)
+  }, [])
+
   const currentCategory = categories.find((cat) => cat.slug === activeCategory)
+
+  // Filter products by category first
   const categoryProducts = products.filter(
     (product) => product.category === activeCategory,
   )
+
+  // Then apply color and price filters
+  const filteredProducts = categoryProducts.filter((product) => {
+    // Color filter
+    const colorMatch =
+      filters.selectedColors.length === 0 ||
+      product.color.some((color) => filters.selectedColors.includes(color))
+
+    // Price filter
+    const productPrice = product.discountPrice || product.price
+    const priceMatch =
+      productPrice >= filters.priceRange.min &&
+      productPrice <= filters.priceRange.max
+
+    return colorMatch && priceMatch
+  })
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -32,18 +59,30 @@ function App() {
           <p className="text-gray-600">{currentCategory?.description}</p>
         </div>
 
-        {/* Product Counter */}
-        <div className="mb-6">
-          <p className="text-gray-600">
-            Showing products from {currentCategory?.name} collection
-          </p>
-          <p className="text-sm text-gray-500 mt-1">
-            Total: {categoryProducts.length} products available
-          </p>
-        </div>
+        {/* Main Content Area with Sidebar */}
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Left: Filter Sidebar */}
+          <aside className="lg:w-80 flex-shrink-0">
+            <FilterPanel
+              products={categoryProducts}
+              onFilterChange={handleFilterChange}
+            />
+          </aside>
 
-        {/* Product Grid with Load More */}
-        <ProductGrid products={categoryProducts} />
+          {/* Right: Products Section */}
+          <div className="flex-1">
+            {/* Product Counter */}
+            <div className="mb-6">
+              <p className="text-gray-600">
+                Showing {filteredProducts.length} of {categoryProducts.length}{' '}
+                products from {currentCategory?.name} collection
+              </p>
+            </div>
+
+            {/* Product Grid with Load More */}
+            <ProductGrid products={filteredProducts} />
+          </div>
+        </div>
       </main>
 
       <footer className="bg-gray-900 text-white mt-16">
