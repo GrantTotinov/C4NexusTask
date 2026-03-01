@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Header from './components/Header/Header'
-import ProductCard from './components/ProductCard/ProductCard'
+import ProductGrid from './components/ProductGrid/ProductGrid'
 import type { Category } from './types'
 import { products, categories } from './data/products'
 
@@ -35,29 +35,15 @@ function App() {
         {/* Product Counter */}
         <div className="mb-6">
           <p className="text-gray-600">
-            Showing {Math.min(6, categoryProducts.length)} of{' '}
-            {categoryProducts.length} products
+            Showing products from {currentCategory?.name} collection
+          </p>
+          <p className="text-sm text-gray-500 mt-1">
+            Total: {categoryProducts.length} products available
           </p>
         </div>
 
-        {/* Product Grid - Testing with first 6 products */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
-          {categoryProducts.slice(0, 6).map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-
-        {/* Temporary note */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-          <p className="text-blue-800">
-            ✅ Product Card component is now complete! Showing first 6 products
-            for testing.
-          </p>
-          <p className="text-sm text-blue-600 mt-2">
-            Next: We'll implement the full Product Grid with Load More
-            functionality
-          </p>
-        </div>
+        {/* Product Grid with Load More */}
+        <ProductGrid products={categoryProducts} />
       </main>
 
       <footer className="bg-gray-900 text-white mt-16">
