@@ -3,6 +3,7 @@ import Header from './components/Header/Header'
 import ProductGrid from './components/ProductGrid/ProductGrid'
 import FilterPanel from './components/FilterPanel/FilterPanel'
 import SortDropdown from './components/SortDropdown/SortDropdown'
+import ProductCounter from './components/ProductCounter/ProductCounter'
 import type { Category, FilterState, SortOption } from './types'
 import { products, categories } from './data/products'
 
@@ -107,15 +108,20 @@ function App() {
           {/* Right: Products Section */}
           <div className="flex-1">
             {/* Product Counter and Sort */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-              <p className="text-gray-600">
-                Showing {sortedProducts.length} of {categoryProducts.length}{' '}
-                products from {currentCategory?.name} collection
-              </p>
-              <SortDropdown
-                currentSort={sortOption}
-                onSortChange={handleSortChange}
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
+              <ProductCounter
+                totalProducts={categoryProducts.length}
+                filteredCount={sortedProducts.length}
+                categoryName={currentCategory?.name || ''}
+                filters={filters}
+                sortOption={sortOption}
               />
+              <div className="lg:ml-auto">
+                <SortDropdown
+                  currentSort={sortOption}
+                  onSortChange={handleSortChange}
+                />
+              </div>
             </div>
 
             {/* Product Grid with Load More */}
