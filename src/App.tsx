@@ -4,6 +4,7 @@ import ProductGrid from './components/ProductGrid/ProductGrid'
 import FilterPanel from './components/FilterPanel/FilterPanel'
 import SortDropdown from './components/SortDropdown/SortDropdown'
 import ProductCounter from './components/ProductCounter/ProductCounter'
+import CategoryHeader from './components/CategoryHeader/CategoryHeader'
 import type { Category, FilterState, SortOption } from './types'
 import { products, categories } from './data/products'
 
@@ -88,12 +89,9 @@ function App() {
 
       <main className="container mx-auto px-4 py-8">
         {/* Category Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            {currentCategory?.name}
-          </h1>
-          <p className="text-gray-600">{currentCategory?.description}</p>
-        </div>
+        {currentCategory && (
+          <CategoryHeader category={currentCategory} />
+        )}
 
         {/* Main Content Area with Sidebar */}
         <div className="flex flex-col lg:flex-row gap-8">
