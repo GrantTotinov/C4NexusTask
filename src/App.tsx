@@ -112,9 +112,7 @@ function App() {
 
       <main className="container mx-auto px-4 py-8">
         {/* Category Header */}
-        {currentCategory && (
-          <CategoryHeader category={currentCategory} />
-        )}
+        {currentCategory && <CategoryHeader category={currentCategory} />}
 
         {/* Main Content Area with Sidebar */}
         <div className="flex flex-col lg:flex-row gap-8">
