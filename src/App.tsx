@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Header from './components/Header/Header'
+import ProductCard from './components/ProductCard/ProductCard'
 import type { Category } from './types'
 import { products, categories } from './data/products'
 
@@ -31,27 +32,31 @@ function App() {
           <p className="text-gray-600">{currentCategory?.description}</p>
         </div>
 
-        {/* Temporary Content for Testing Scroll */}
-        <div className="space-y-8">
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-2xl font-semibold mb-4">
-              Products in {currentCategory?.name}
-            </h2>
-            <p className="text-gray-600">
-              Total products: {categoryProducts.length}
-            </p>
-          </div>
+        {/* Product Counter */}
+        <div className="mb-6">
+          <p className="text-gray-600">
+            Showing {Math.min(6, categoryProducts.length)} of{' '}
+            {categoryProducts.length} products
+          </p>
+        </div>
 
-          {/* Dummy content to enable scrolling and test sticky header */}
-          {Array.from({ length: 20 }).map((_, idx) => (
-            <div key={idx} className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-xl font-semibold mb-2">Section {idx + 1}</h3>
-              <p className="text-gray-600">
-                This is temporary content to test the sticky header behavior.
-                Scroll down to see the header stick to the top of the page.
-              </p>
-            </div>
+        {/* Product Grid - Testing with first 6 products */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+          {categoryProducts.slice(0, 6).map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))}
+        </div>
+
+        {/* Temporary note */}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
+          <p className="text-blue-800">
+            ✅ Product Card component is now complete! Showing first 6 products
+            for testing.
+          </p>
+          <p className="text-sm text-blue-600 mt-2">
+            Next: We'll implement the full Product Grid with Load More
+            functionality
+          </p>
         </div>
       </main>
 
