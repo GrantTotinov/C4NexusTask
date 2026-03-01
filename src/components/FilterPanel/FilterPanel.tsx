@@ -96,7 +96,7 @@ const FilterPanel = ({ products, onFilterChange }: FilterPanelProps) => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 sticky top-24">
+    <div className="bg-white rounded-lg shadow-md p-6 lg:sticky lg:top-24">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-gray-900">Filters</h2>
         {hasActiveFilters && (

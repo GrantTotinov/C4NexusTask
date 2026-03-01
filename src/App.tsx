@@ -2,6 +2,7 @@ import { useState, useCallback, useMemo } from 'react'
 import Header from './components/Header/Header'
 import ProductGrid from './components/ProductGrid/ProductGrid'
 import FilterPanel from './components/FilterPanel/FilterPanel'
+import MobileFilterDrawer from './components/MobileFilterDrawer/MobileFilterDrawer'
 import SortDropdown from './components/SortDropdown/SortDropdown'
 import ProductCounter from './components/ProductCounter/ProductCounter'
 import CategoryHeader from './components/CategoryHeader/CategoryHeader'
@@ -117,8 +118,8 @@ function App() {
 
         {/* Main Content Area with Sidebar */}
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Left: Filter Sidebar */}
-          <aside className="lg:w-80 flex-shrink-0">
+          {/* Desktop: Filter Sidebar (hidden on mobile) */}
+          <aside className="hidden lg:block lg:w-80 flex-shrink-0">
             <FilterPanel
               products={categoryProducts}
               onFilterChange={handleFilterChange}
@@ -127,9 +128,15 @@ function App() {
 
           {/* Right: Products Section */}
           <div className="flex-1">
+            {/* Mobile: Filter Drawer Button */}
+            <MobileFilterDrawer
+              products={categoryProducts}
+              onFilterChange={handleFilterChange}
+            />
+
             {/* Product Counter and Sort */}
             {!isLoading && (
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
                 <ProductCounter
                   totalProducts={categoryProducts.length}
                   filteredCount={sortedProducts.length}
@@ -137,7 +144,7 @@ function App() {
                   filters={filters}
                   sortOption={sortOption}
                 />
-                <div className="lg:ml-auto">
+                <div className="sm:ml-auto">
                   <SortDropdown
                     currentSort={sortOption}
                     onSortChange={handleSortChange}

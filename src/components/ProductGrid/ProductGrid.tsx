@@ -4,25 +4,45 @@ import type { Product } from '../../types'
 
 interface ProductGridProps {
   products: Product[]
-  initialItemsPerRow?: number
-  initialRows?: number
 }
 
-const ProductGrid = ({
-  products,
-  initialItemsPerRow = 4,
-  initialRows = 5,
-}: ProductGridProps) => {
-  const [visibleCount, setVisibleCount] = useState(
-    initialItemsPerRow * initialRows,
-  )
+const ProductGrid = ({ products }: ProductGridProps) => {
+  const [itemsPerRow, setItemsPerRow] = useState(4)
+  const rowsToShow = 5
+  const [visibleCount, setVisibleCount] = useState(itemsPerRow * rowsToShow)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
+
+  // Determine items per row based on screen size
+  useEffect(() => {
+    const updateItemsPerRow = () => {
+      const width = window.innerWidth
+      if (width < 768) {
+        // Mobile: 2 columns
+        setItemsPerRow(2)
+      } else if (width < 1024) {
+        // Tablet: 2 columns
+        setItemsPerRow(2)
+      } else {
+        // Desktop: 4 columns
+        setItemsPerRow(4)
+      }
+    }
+
+    updateItemsPerRow()
+    window.addEventListener('resize', updateItemsPerRow)
+    return () => window.removeEventListener('resize', updateItemsPerRow)
+  }, [])
+
+  // Update visible count when itemsPerRow changes
+  useEffect(() => {
+    setVisibleCount(itemsPerRow * rowsToShow)
+  }, [itemsPerRow])
 
   // Reset visible count when products change (e.g., category change)
   useEffect(() => {
-    setVisibleCount(initialItemsPerRow * initialRows)
+    setVisibleCount(itemsPerRow * rowsToShow)
     setIsLoadingMore(false)
-  }, [products, initialItemsPerRow, initialRows])
+  }, [products, itemsPerRow])
 
   const visibleProducts = products.slice(0, visibleCount)
   const hasMore = visibleCount < products.length
@@ -31,7 +51,7 @@ const ProductGrid = ({
     setIsLoadingMore(true)
     // Simulate loading delay for smooth UX
     setTimeout(() => {
-      setVisibleCount((prev) => prev + initialItemsPerRow * initialRows)
+      setVisibleCount((prev) => prev + itemsPerRow * rowsToShow)
       setIsLoadingMore(false)
     }, 600)
   }
@@ -39,7 +59,7 @@ const ProductGrid = ({
   return (
     <div className="animate-fadeIn">
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {visibleProducts.map((product, index) => (
           <div
             key={product.id}
@@ -53,7 +73,7 @@ const ProductGrid = ({
 
         {/* Loading More Skeletons */}
         {isLoadingMore &&
-          Array.from({ length: Math.min(initialItemsPerRow * initialRows, 8) }).map(
+          Array.from({ length: Math.min(itemsPerRow * rowsToShow, 10) }).map(
             (_, index) => (
               <div
                 key={`skeleton-${index}`}

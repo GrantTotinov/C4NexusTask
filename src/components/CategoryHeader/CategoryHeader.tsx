@@ -38,14 +38,14 @@ const CategoryHeader = ({ category }: CategoryHeaderProps) => {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl transform -rotate-1"></div>
 
         {/* Content */}
-        <div className="relative bg-white rounded-2xl shadow-md p-8 border border-gray-100">
+        <div className="relative bg-white rounded-2xl shadow-md p-6 md:p-8 border border-gray-100">
           {/* Category Title */}
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-3 tracking-tight">
             {category.name}
           </h1>
 
           {/* Category Description */}
-          <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
+          <p className="text-base md:text-lg text-gray-600 max-w-3xl leading-relaxed">
             {category.description}
           </p>
         </div>
