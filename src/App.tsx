@@ -1,8 +1,9 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import Header from './components/Header/Header'
 import ProductGrid from './components/ProductGrid/ProductGrid'
 import FilterPanel from './components/FilterPanel/FilterPanel'
-import type { Category, FilterState } from './types'
+import SortDropdown from './components/SortDropdown/SortDropdown'
+import type { Category, FilterState, SortOption } from './types'
 import { products, categories } from './data/products'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     selectedColors: [],
     priceRange: { min: 0, max: 1000 },
   })
+  const [sortOption, setSortOption] = useState<SortOption>('default')
 
   const handleCategoryChange = (slug: Category['slug']) => {
     setActiveCategory(slug)
@@ -20,6 +22,10 @@ function App() {
     setFilters(newFilters)
   }, [])
 
+  const handleSortChange = (sort: SortOption) => {
+    setSortOption(sort)
+  }
+
   const currentCategory = categories.find((cat) => cat.slug === activeCategory)
 
   // Filter products by category first
@@ -28,20 +34,49 @@ function App() {
   )
 
   // Then apply color and price filters
-  const filteredProducts = categoryProducts.filter((product) => {
-    // Color filter
-    const colorMatch =
-      filters.selectedColors.length === 0 ||
-      product.color.some((color) => filters.selectedColors.includes(color))
+  const filteredProducts = useMemo(() => {
+    return categoryProducts.filter((product) => {
+      // Color filter
+      const colorMatch =
+        filters.selectedColors.length === 0 ||
+        product.color.some((color) => filters.selectedColors.includes(color))
 
-    // Price filter
-    const productPrice = product.discountPrice || product.price
-    const priceMatch =
-      productPrice >= filters.priceRange.min &&
-      productPrice <= filters.priceRange.max
+      // Price filter
+      const productPrice = product.discountPrice || product.price
+      const priceMatch =
+        productPrice >= filters.priceRange.min &&
+        productPrice <= filters.priceRange.max
 
-    return colorMatch && priceMatch
-  })
+      return colorMatch && priceMatch
+    })
+  }, [categoryProducts, filters])
+
+  // Apply sorting to filtered products
+  const sortedProducts = useMemo(() => {
+    const productsToSort = [...filteredProducts]
+
+    switch (sortOption) {
+      case 'a-z':
+        return productsToSort.sort((a, b) => a.name.localeCompare(b.name))
+      case 'z-a':
+        return productsToSort.sort((a, b) => b.name.localeCompare(a.name))
+      case 'price-low-high':
+        return productsToSort.sort((a, b) => {
+          const priceA = a.discountPrice || a.price
+          const priceB = b.discountPrice || b.price
+          return priceA - priceB
+        })
+      case 'price-high-low':
+        return productsToSort.sort((a, b) => {
+          const priceA = a.discountPrice || a.price
+          const priceB = b.discountPrice || b.price
+          return priceB - priceA
+        })
+      case 'default':
+      default:
+        return productsToSort
+    }
+  }, [filteredProducts, sortOption])
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -71,16 +106,20 @@ function App() {
 
           {/* Right: Products Section */}
           <div className="flex-1">
-            {/* Product Counter */}
-            <div className="mb-6">
+            {/* Product Counter and Sort */}
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
               <p className="text-gray-600">
-                Showing {filteredProducts.length} of {categoryProducts.length}{' '}
+                Showing {sortedProducts.length} of {categoryProducts.length}{' '}
                 products from {currentCategory?.name} collection
               </p>
+              <SortDropdown
+                currentSort={sortOption}
+                onSortChange={handleSortChange}
+              />
             </div>
 
             {/* Product Grid with Load More */}
-            <ProductGrid products={filteredProducts} />
+            <ProductGrid products={sortedProducts} />
           </div>
         </div>
       </main>
