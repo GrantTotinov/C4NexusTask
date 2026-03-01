@@ -5,6 +5,8 @@ import FilterPanel from './components/FilterPanel/FilterPanel'
 import SortDropdown from './components/SortDropdown/SortDropdown'
 import ProductCounter from './components/ProductCounter/ProductCounter'
 import CategoryHeader from './components/CategoryHeader/CategoryHeader'
+import LoadingSkeleton from './components/LoadingSkeleton/LoadingSkeleton'
+import EmptyState from './components/EmptyState/EmptyState'
 import type { Category, FilterState, SortOption } from './types'
 import { products, categories } from './data/products'
 
@@ -15,9 +17,15 @@ function App() {
     priceRange: { min: 0, max: 1000 },
   })
   const [sortOption, setSortOption] = useState<SortOption>('default')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleCategoryChange = (slug: Category['slug']) => {
+    setIsLoading(true)
     setActiveCategory(slug)
+    // Simulate loading for smooth UX
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 300)
   }
 
   const handleFilterChange = useCallback((newFilters: FilterState) => {
@@ -26,6 +34,20 @@ function App() {
 
   const handleSortChange = (sort: SortOption) => {
     setSortOption(sort)
+  }
+
+  const handleClearFilters = () => {
+    setFilters({
+      selectedColors: [],
+      priceRange: {
+        min: Math.floor(
+          Math.min(...categoryProducts.map((p) => p.discountPrice || p.price)),
+        ),
+        max: Math.ceil(
+          Math.max(...categoryProducts.map((p) => p.discountPrice || p.price)),
+        ),
+      },
+    })
   }
 
   const currentCategory = categories.find((cat) => cat.slug === activeCategory)
@@ -106,24 +128,39 @@ function App() {
           {/* Right: Products Section */}
           <div className="flex-1">
             {/* Product Counter and Sort */}
-            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
-              <ProductCounter
-                totalProducts={categoryProducts.length}
-                filteredCount={sortedProducts.length}
-                categoryName={currentCategory?.name || ''}
-                filters={filters}
-                sortOption={sortOption}
-              />
-              <div className="lg:ml-auto">
-                <SortDropdown
-                  currentSort={sortOption}
-                  onSortChange={handleSortChange}
+            {!isLoading && (
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
+                <ProductCounter
+                  totalProducts={categoryProducts.length}
+                  filteredCount={sortedProducts.length}
+                  categoryName={currentCategory?.name || ''}
+                  filters={filters}
+                  sortOption={sortOption}
                 />
+                <div className="lg:ml-auto">
+                  <SortDropdown
+                    currentSort={sortOption}
+                    onSortChange={handleSortChange}
+                  />
+                </div>
               </div>
-            </div>
+            )}
+
+            {/* Loading State */}
+            {isLoading && <LoadingSkeleton />}
+
+            {/* Empty State */}
+            {!isLoading && sortedProducts.length === 0 && (
+              <EmptyState
+                onClearFilters={handleClearFilters}
+                hasActiveFilters={filters.selectedColors.length > 0}
+              />
+            )}
 
             {/* Product Grid with Load More */}
-            <ProductGrid products={sortedProducts} />
+            {!isLoading && sortedProducts.length > 0 && (
+              <ProductGrid products={sortedProducts} />
+            )}
           </div>
         </div>
       </main>
