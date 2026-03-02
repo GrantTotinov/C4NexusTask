@@ -37,8 +37,8 @@ const CategoryHeader = ({ category }: CategoryHeaderProps) => {
         {/* Decorative gradient background */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl transform -rotate-1"></div>
 
-        {/* Content */}
-        <div className="relative bg-white rounded-2xl shadow-md p-6 md:p-8 border border-gray-100">
+        {/* Content - hidden on mobile */}
+        <div className="hidden md:block relative bg-white rounded-2xl shadow-md p-6 md:p-8 border border-gray-100">
           {/* Category Title */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-3 tracking-tight">
             {category.name}

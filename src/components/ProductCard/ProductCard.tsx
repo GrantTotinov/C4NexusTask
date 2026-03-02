@@ -77,7 +77,7 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
   const hasDiscount = product.discountPrice !== undefined
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <div className="h-full flex flex-col bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
       {/* Product Image */}
       <div className="relative aspect-square overflow-hidden bg-gray-100">
         <img
@@ -93,14 +93,14 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
       </div>
 
       {/* Product Info */}
-      <div className="p-4">
+      <div className="p-4 flex flex-col flex-1">
         {/* Product Name */}
         <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">
           {product.name}
         </h3>
 
         {/* Product Description */}
-        <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+        <p className="text-sm text-gray-600 mb-3 line-clamp-2 h-10">
           {product.description}
         </p>
 
@@ -111,18 +111,18 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
         </div>
 
         {/* Price */}
-        <div className="mb-4">
+        <div className="mb-4 w-full">
           {hasDiscount ? (
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-gray-900">
+            <div className="flex flex-wrap items-center gap-2 w-full">
+              <span className="text-2xl font-bold text-red-600 break-words">
                 ${product.discountPrice?.toFixed(2)}
               </span>
-              <span className="text-lg text-gray-500 line-through">
+              <span className="text-lg text-gray-500 line-through break-words">
                 ${product.price.toFixed(2)}
               </span>
             </div>
           ) : (
-            <span className="text-2xl font-bold text-gray-900">
+            <span className="text-2xl font-bold text-gray-900 break-words w-full">
               ${product.price.toFixed(2)}
             </span>
           )}
@@ -132,7 +132,7 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
         <button
           onClick={handleAddToCart}
           disabled={isAdding || showSuccess}
-          className={`w-full py-2 px-4 rounded-lg font-medium transition-colors duration-200 ${
+          className={`w-full py-2 px-4 rounded-lg font-medium transition-colors duration-200 mt-auto ${
             showSuccess
               ? 'bg-green-500 text-white'
               : isAdding
