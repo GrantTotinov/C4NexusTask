@@ -3,14 +3,16 @@ import type { Product } from '../../types'
 
 interface ProductCardProps {
   product: Product
+  onAddToCart?: (product: Product) => void
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
   const [isAdding, setIsAdding] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
 
   const handleAddToCart = () => {
     setIsAdding(true)
+    onAddToCart?.(product)
 
     setTimeout(() => {
       setIsAdding(false)

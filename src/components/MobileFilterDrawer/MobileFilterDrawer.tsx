@@ -5,11 +5,15 @@ import type { Product, FilterState } from '../../types'
 interface MobileFilterDrawerProps {
   products: Product[]
   onFilterChange: (filters: FilterState) => void
+  selectedColors: string[]
+  priceRange: { min: number; max: number }
 }
 
 const MobileFilterDrawer = ({
   products,
   onFilterChange,
+  selectedColors,
+  priceRange,
 }: MobileFilterDrawerProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -73,7 +77,12 @@ const MobileFilterDrawer = ({
 
         {/* Filter Content */}
         <div className="[&>div]:shadow-none [&>div]:rounded-none">
-          <FilterPanel products={products} onFilterChange={onFilterChange} />
+          <FilterPanel
+            products={products}
+            onFilterChange={onFilterChange}
+            selectedColors={selectedColors}
+            priceRange={priceRange}
+          />
         </div>
       </div>
     </>

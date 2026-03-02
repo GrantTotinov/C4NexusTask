@@ -5,7 +5,10 @@ interface EmptyStateProps {
 
 const EmptyState = ({ onClearFilters, hasActiveFilters }: EmptyStateProps) => {
   return (
-    <div className="flex flex-col items-center justify-center py-16 px-4 text-center animate-fadeIn">
+    <div
+      className="flex flex-col items-center justify-center py-16 px-4 text-center"
+      style={{ animation: 'fadeIn 0.5s ease-out' }}
+    >
       {/* Icon */}
       <div className="mb-6">
         <svg

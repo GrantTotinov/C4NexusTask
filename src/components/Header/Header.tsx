@@ -4,9 +4,16 @@ import type { Category } from '../../types'
 interface HeaderProps {
   activeCategory?: string
   onCategoryChange?: (slug: Category['slug']) => void
+  cartItemCount?: number
+  onCartClick?: () => void
 }
 
-const Header = ({ activeCategory = 'bags', onCategoryChange }: HeaderProps) => {
+const Header = ({
+  activeCategory = 'bags',
+  onCategoryChange,
+  cartItemCount = 0,
+  onCartClick,
+}: HeaderProps) => {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="container mx-auto px-4">
@@ -33,8 +40,31 @@ const Header = ({ activeCategory = 'bags', onCategoryChange }: HeaderProps) => {
             ))}
           </nav>
 
+          {/* Cart Button */}
+          <button
+            onClick={onCartClick}
+            className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
+          >
+            <svg
+              className="w-6 h-6 text-gray-700"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            </svg>
+            {cartItemCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                {cartItemCount}
+              </span>
+            )}
+          </button>
+
           {/* Mobile menu button - for future implementation */}
-          <div className="md:hidden">
+          <div className="md:hidden hidden">
             <button className="text-gray-700 hover:text-blue-600">
               <svg
                 className="h-6 w-6"

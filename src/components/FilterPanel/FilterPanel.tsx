@@ -4,12 +4,16 @@ import type { Product, FilterState } from '../../types'
 interface FilterPanelProps {
   products: Product[]
   onFilterChange: (filters: FilterState) => void
+  selectedColors: string[]
+  priceRange: { min: number; max: number }
 }
 
-const FilterPanel = ({ products, onFilterChange }: FilterPanelProps) => {
-  const [selectedColors, setSelectedColors] = useState<string[]>([])
-  const [minPrice, setMinPrice] = useState(0)
-  const [maxPrice, setMaxPrice] = useState(1000)
+const FilterPanel = ({
+  products,
+  onFilterChange,
+  selectedColors,
+  priceRange,
+}: FilterPanelProps) => {
   const [absoluteMin, setAbsoluteMin] = useState(0)
   const [absoluteMax, setAbsoluteMax] = useState(1000)
 
@@ -26,29 +30,25 @@ const FilterPanel = ({ products, onFilterChange }: FilterPanelProps) => {
       const max = Math.ceil(Math.max(...prices))
       setAbsoluteMin(min)
       setAbsoluteMax(max)
-      setMinPrice(min)
-      setMaxPrice(max)
     }
   }, [products])
 
-  // Notify parent component when filters change
-  useEffect(() => {
-    onFilterChange({
-      selectedColors,
-      priceRange: { min: minPrice, max: maxPrice },
-    })
-  }, [selectedColors, minPrice, maxPrice, onFilterChange])
-
   const handleColorToggle = (color: string) => {
-    setSelectedColors((prev) =>
-      prev.includes(color) ? prev.filter((c) => c !== color) : [...prev, color],
-    )
+    const newColors = selectedColors.includes(color)
+      ? selectedColors.filter((c) => c !== color)
+      : [...selectedColors, color]
+
+    onFilterChange({
+      selectedColors: newColors,
+      priceRange,
+    })
   }
 
   const clearFilters = () => {
-    setSelectedColors([])
-    setMinPrice(absoluteMin)
-    setMaxPrice(absoluteMax)
+    onFilterChange({
+      selectedColors: [],
+      priceRange: { min: absoluteMin, max: absoluteMax },
+    })
   }
 
   const hasActiveFilters = selectedColors.length > 0
@@ -158,18 +158,18 @@ const FilterPanel = ({ products, onFilterChange }: FilterPanelProps) => {
         </h3>
         <div className="mb-4">
           <div className="flex justify-between text-sm font-medium text-gray-700 mb-2">
-            <span>${minPrice}</span>
-            <span>${maxPrice}</span>
+            <span>${priceRange.min}</span>
+            <span>${priceRange.max}</span>
           </div>
           <div className="relative h-12">
             {/* Track */}
-            <div className="absolute top-5 left-0 right-0 h-2 bg-gray-200 rounded" />
+            <div className="absolute top-5 left-0 right-0 h-2 bg-gray-200 rounded pointer-events-none" />
             {/* Active range */}
             <div
-              className="absolute top-5 h-2 bg-blue-600 rounded"
+              className="absolute top-5 h-2 bg-blue-600 rounded pointer-events-none"
               style={{
-                left: `${((minPrice - absoluteMin) / (absoluteMax - absoluteMin)) * 100}%`,
-                right: `${100 - ((maxPrice - absoluteMin) / (absoluteMax - absoluteMin)) * 100}%`,
+                left: `${((priceRange.min - absoluteMin) / (absoluteMax - absoluteMin)) * 100}%`,
+                right: `${100 - ((priceRange.max - absoluteMin) / (absoluteMax - absoluteMin)) * 100}%`,
               }}
             />
             {/* Min slider */}
@@ -177,28 +177,34 @@ const FilterPanel = ({ products, onFilterChange }: FilterPanelProps) => {
               type="range"
               min={absoluteMin}
               max={absoluteMax}
-              value={minPrice}
+              value={priceRange.min}
               onChange={(e) => {
                 const value = parseInt(e.target.value)
-                if (value <= maxPrice) {
-                  setMinPrice(value)
+                if (value <= priceRange.max) {
+                  onFilterChange({
+                    selectedColors,
+                    priceRange: { min: value, max: priceRange.max },
+                  })
                 }
               }}
-              className="absolute w-full h-2 top-5 appearance-none bg-transparent pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-blue-600 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-blue-600 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:shadow-md"
+              className="absolute w-full h-2 top-5 appearance-none bg-transparent cursor-pointer z-10 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-blue-600 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-blue-600 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:border-0"
             />
             {/* Max slider */}
             <input
               type="range"
               min={absoluteMin}
               max={absoluteMax}
-              value={maxPrice}
+              value={priceRange.max}
               onChange={(e) => {
                 const value = parseInt(e.target.value)
-                if (value >= minPrice) {
-                  setMaxPrice(value)
+                if (value >= priceRange.min) {
+                  onFilterChange({
+                    selectedColors,
+                    priceRange: { min: priceRange.min, max: value },
+                  })
                 }
               }}
-              className="absolute w-full h-2 top-5 appearance-none bg-transparent pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-blue-600 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-blue-600 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:shadow-md"
+              className="absolute w-full h-2 top-5 appearance-none bg-transparent cursor-pointer z-20 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-blue-600 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-blue-600 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:border-0"
             />
           </div>
         </div>

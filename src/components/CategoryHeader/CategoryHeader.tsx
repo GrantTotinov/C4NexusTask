@@ -6,7 +6,7 @@ interface CategoryHeaderProps {
 
 const CategoryHeader = ({ category }: CategoryHeaderProps) => {
   return (
-    <div className="mb-8 animate-fadeIn">
+    <div className="mb-8" style={{ animation: 'fadeIn 0.5s ease-out' }}>
       {/* Breadcrumbs */}
       <nav className="mb-4">
         <ol className="flex items-center space-x-2 text-sm text-gray-600">

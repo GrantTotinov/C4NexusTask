@@ -4,9 +4,10 @@ import type { Product } from '../../types'
 
 interface ProductGridProps {
   products: Product[]
+  onAddToCart?: (product: Product) => void
 }
 
-const ProductGrid = ({ products }: ProductGridProps) => {
+const ProductGrid = ({ products, onAddToCart }: ProductGridProps) => {
   const [itemsPerRow, setItemsPerRow] = useState(4)
   const rowsToShow = 5
   const [visibleCount, setVisibleCount] = useState(itemsPerRow * rowsToShow)
@@ -57,7 +58,7 @@ const ProductGrid = ({ products }: ProductGridProps) => {
   }
 
   return (
-    <div className="animate-fadeIn">
+    <div style={{ animation: 'fadeIn 0.5s ease-out' }}>
       {/* Product Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {visibleProducts.map((product, index) => (
@@ -67,7 +68,7 @@ const ProductGrid = ({ products }: ProductGridProps) => {
               animation: `fadeIn 0.5s ease-out ${index * 0.05}s both`,
             }}
           >
-            <ProductCard product={product} />
+            <ProductCard product={product} onAddToCart={onAddToCart} />
           </div>
         ))}
 
@@ -91,7 +92,10 @@ const ProductGrid = ({ products }: ProductGridProps) => {
                   </div>
                   <div className="flex gap-1">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <div key={i} className="w-4 h-4 bg-gray-200 rounded"></div>
+                      <div
+                        key={i}
+                        className="w-4 h-4 bg-gray-200 rounded"
+                      ></div>
                     ))}
                   </div>
                   <div className="h-8 bg-gray-200 rounded w-1/2"></div>
@@ -145,7 +149,10 @@ const ProductGrid = ({ products }: ProductGridProps) => {
 
       {/* End of Products Message */}
       {!hasMore && products.length > 0 && (
-        <div className="text-center text-gray-600 py-8 animate-fadeIn">
+        <div
+          className="text-center text-gray-600 py-8"
+          style={{ animation: 'fadeIn 0.5s ease-out' }}
+        >
           <p className="text-lg font-medium">You've reached the end!</p>
           <p className="text-sm mt-2">
             All {products.length} products have been loaded.

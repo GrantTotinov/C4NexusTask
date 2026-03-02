@@ -41,3 +41,9 @@ export interface SortOptionConfig {
   value: SortOption
   label: string
 }
+
+// Cart item type definit (Product + quantity)
+export interface CartItem {
+  product: Product
+  quantity: number
+}
