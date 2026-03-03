@@ -9,9 +9,11 @@ C4 Nexus Junior Developer Technical Task
 A fully functional Product Listing Page (PLP) built with React,TypeScript and Tailwind css v4. The app simulates a real e-commerce experience with four product categories, filters, sorting, a cart, and responsive layout across all screen sizes.
 
 ## Demo
+
 <p align="center">
   <img src="https://i.imgur.com/bgAQOAW.gif" width="800"/>
 </p>
+
 ### Features
 
 **Navigation & Layout**
