@@ -57,10 +57,10 @@ const CategoryHeader = ({ category, onFilterClick }: CategoryHeaderProps) => {
             <li className="text-gray-900 font-medium">{category.name}</li>
           </ol>
 
-          {/* Morphing filter button - само за мобилно */}
+          {/* Morphing filter button - visible for mobile and tablet */}
           <button
             onClick={onFilterClick}
-            className="md:hidden bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition-all duration-500"
+            className="lg:hidden bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition-all duration-500"
             style={{
               position: showFloating ? 'fixed' : 'relative',
               left: showFloating ? '0' : 'auto',
