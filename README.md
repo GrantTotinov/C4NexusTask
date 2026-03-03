@@ -10,9 +10,7 @@ A fully functional Product Listing Page (PLP) built with React,TypeScript and Ta
 
 ## Demo
 
-<p align="center">
-  <img src="https://i.imgur.com/bgAQOAW.gif" width="800"/>
-</p>
+![PLP Demo](https://i.imgur.com/bgAQOAW.gif)
 
 ### Features
 
