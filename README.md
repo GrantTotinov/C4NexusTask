@@ -1,7 +1,3 @@
-![PLP Demo](https://i.imgur.com/bgAQOAW.gif)
-
-
-
 # ShopHub — Product Listing Page
 
 C4 Nexus Junior Developer Technical Task
@@ -13,6 +9,11 @@ C4 Nexus Junior Developer Technical Task
 A fully functional Product Listing Page (PLP) built with React,TypeScript and Tailwind css v4. The app simulates a real e-commerce experience with four product categories, filters, sorting, a cart, and responsive layout across all screen sizes.
 
 ## Demo
+
+
+https://github.com/user-attachments/assets/a0e82e97-2f44-4e41-a6e2-7b721fa795cd
+
+
 
 ### Features
 
