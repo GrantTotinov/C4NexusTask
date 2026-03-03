@@ -11,6 +11,7 @@ import CategoryHeader from './components/CategoryHeader/CategoryHeader'
 import LoadingSkeleton from './components/LoadingSkeleton/LoadingSkeleton'
 import EmptyState from './components/EmptyState/EmptyState'
 import CartDrawer from './components/CartDrawer/CartDrawer'
+import SearchBar from './components/SearchBar/SearchBar'
 import type {
   Category,
   FilterState,
@@ -36,6 +37,7 @@ function App() {
     priceRange: { min: minPrice, max: maxPrice },
   })
   const [sortOption, setSortOption] = useState<SortOption>('default')
+  const [searchQuery, setSearchQuery] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [cart, setCart] = useState<CartItem[]>([])
   const cartDrawer = useToggle(false)
@@ -94,12 +96,13 @@ function App() {
     }, 0)
   }, [cart])
 
-  // Reset filters when category changes
+  // Reset filters and search when category changes
   useEffect(() => {
     setFilters({
       selectedColors: [],
       priceRange: { min: minPrice, max: maxPrice },
     })
+    setSearchQuery('')
   }, [activeCategory, minPrice, maxPrice])
 
   const handleCategoryChange = (slug: Category['slug']) => {
@@ -116,6 +119,10 @@ function App() {
     setFilters(newFilters)
   }, [])
 
+  const handleSearchChange = useCallback((query: string) => {
+    setSearchQuery(query)
+  }, [])
+
   const handleSortChange = (sort: SortOption) => {
     setSortOption(sort)
   }
@@ -125,13 +132,20 @@ function App() {
       selectedColors: [],
       priceRange: { min: minPrice, max: maxPrice },
     })
+    setSearchQuery('')
   }
 
   const currentCategory = categories.find((cat) => cat.slug === activeCategory)
 
-  // Then apply color and price filters
+  // Then apply color, price, and search filters
   const filteredProducts = useMemo(() => {
     return categoryProducts.filter((product) => {
+      // Search filter (by name and description)
+      const searchMatch =
+        !searchQuery ||
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchQuery.toLowerCase())
+
       // Color filter
       const colorMatch =
         filters.selectedColors.length === 0 ||
@@ -143,9 +157,9 @@ function App() {
         productPrice >= filters.priceRange.min &&
         productPrice <= filters.priceRange.max
 
-      return colorMatch && priceMatch
+      return searchMatch && colorMatch && priceMatch
     })
-  }, [categoryProducts, filters])
+  }, [categoryProducts, filters, searchQuery])
 
   // Apply sorting to filtered products
   const sortedProducts = useMemo(() => {
@@ -219,6 +233,17 @@ function App() {
                 onClose={mobileFilter.close}
               />
             </div>
+
+            {/* Search Bar */}
+            {!isLoading && (
+              <div className="mb-6">
+                <SearchBar
+                  searchQuery={searchQuery}
+                  onSearchChange={handleSearchChange}
+                  resultsCount={filteredProducts.length}
+                />
+              </div>
+            )}
 
             {/* Product Counter and Sort */}
             {!isLoading && (

@@ -35,6 +35,7 @@ export function useLocalStorage<T>(
 
   // Return a wrapped version of useState's setter function that
   // persists the new value to localStorage
+  // Have to fix a bug later !!!
   const setValue = useCallback(
     (value: SetValue<T>) => {
       try {
