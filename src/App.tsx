@@ -37,6 +37,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [cart, setCart] = useState<CartItem[]>([])
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false)
 
   // Cart functions
   const addToCart = useCallback((product: Product) => {
@@ -198,7 +199,12 @@ function App() {
 
       <main className="container mx-auto px-4 py-8">
         {/* Category Header */}
-        {currentCategory && <CategoryHeader category={currentCategory} />}
+        {currentCategory && (
+          <CategoryHeader
+            category={currentCategory}
+            onFilterClick={() => setIsMobileFilterOpen(true)}
+          />
+        )}
 
         {/* Main Content Area with Sidebar */}
         <div className="flex flex-col lg:flex-row gap-8">
@@ -223,34 +229,9 @@ function App() {
                 onFilterChange={handleFilterChange}
                 selectedColors={filters.selectedColors}
                 priceRange={filters.priceRange}
+                isOpen={isMobileFilterOpen}
+                onClose={() => setIsMobileFilterOpen(false)}
               />
-            </div>
-
-            {/* Tablet/Desktop: Filter Button под броя продукти */}
-            <div className="hidden md:block mb-6">
-              <button
-                onClick={() =>
-                  document &&
-                  document.dispatchEvent(new CustomEvent('openFilterDrawer'))
-                }
-                className="mx-auto block bg-blue-600 text-white font-medium rounded-full px-8 py-3 shadow-md hover:bg-blue-700 transition-all text-lg"
-                style={{ minWidth: 180 }}
-              >
-                <span className="inline-flex items-center gap-2">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
-                  </svg>
-                  Filters
-                </span>
-              </button>
             </div>
 
             {/* Product Counter and Sort */}
