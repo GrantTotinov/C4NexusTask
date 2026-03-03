@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useToggle } from '../../hooks/ui/useToggle'
 import type { Product } from '../../types'
 
 interface ProductCardProps {
@@ -7,19 +7,19 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
-  const [isAdding, setIsAdding] = useState(false)
-  const [showSuccess, setShowSuccess] = useState(false)
+  const adding = useToggle(false)
+  const success = useToggle(false)
 
   const handleAddToCart = () => {
-    setIsAdding(true)
+    adding.open()
     onAddToCart?.(product)
 
     setTimeout(() => {
-      setIsAdding(false)
-      setShowSuccess(true)
+      adding.close()
+      success.open()
 
       setTimeout(() => {
-        setShowSuccess(false)
+        success.close()
       }, 2000)
     }, 300)
   }
@@ -131,16 +131,16 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
         {/* Add to Cart Button */}
         <button
           onClick={handleAddToCart}
-          disabled={isAdding || showSuccess}
+          disabled={adding.isOpen || success.isOpen}
           className={`w-full py-2 px-4 rounded-lg font-medium transition-colors duration-200 mt-auto ${
-            showSuccess
+            success.isOpen
               ? 'bg-green-500 text-white'
-              : isAdding
+              : adding.isOpen
                 ? 'bg-gray-400 text-white cursor-not-allowed'
                 : 'bg-blue-600 text-white hover:bg-blue-700'
           }`}
         >
-          {showSuccess ? (
+          {success.isOpen ? (
             <span className="flex items-center justify-center gap-2">
               <svg
                 className="w-5 h-5"
@@ -155,7 +155,7 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
               </svg>
               Added to Cart!
             </span>
-          ) : isAdding ? (
+          ) : adding.isOpen ? (
             'Adding...'
           ) : (
             'Add to Cart'

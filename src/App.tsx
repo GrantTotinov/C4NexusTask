@@ -1,4 +1,6 @@
-import { useState, useCallback, useMemo } from 'react'
+import { useState, useCallback, useMemo, useEffect } from 'react'
+import { useToggle } from './hooks/ui/useToggle'
+import { usePriceRange } from './hooks/filters/usePriceRange'
 import Header from './components/Header/Header'
 import ProductGrid from './components/ProductGrid/ProductGrid'
 import FilterPanel from './components/FilterPanel/FilterPanel'
@@ -21,23 +23,23 @@ import { products, categories } from './data/products'
 function App() {
   const [activeCategory, setActiveCategory] = useState<Category['slug']>('bags')
 
-  // Calculate initial price range for the default category
-  const initialProducts = products.filter((p) => p.category === 'bags')
-  const initialPrices = initialProducts.map((p) => p.discountPrice || p.price)
-  const initialMin =
-    initialPrices.length > 0 ? Math.floor(Math.min(...initialPrices)) : 0
-  const initialMax =
-    initialPrices.length > 0 ? Math.ceil(Math.max(...initialPrices)) : 1000
+  // Filter products by category first
+  const categoryProducts = products.filter(
+    (product) => product.category === activeCategory,
+  )
+
+  // Calculate price range for current category
+  const { minPrice, maxPrice } = usePriceRange(categoryProducts)
 
   const [filters, setFilters] = useState<FilterState>({
     selectedColors: [],
-    priceRange: { min: initialMin, max: initialMax },
+    priceRange: { min: minPrice, max: maxPrice },
   })
   const [sortOption, setSortOption] = useState<SortOption>('default')
   const [isLoading, setIsLoading] = useState(false)
   const [cart, setCart] = useState<CartItem[]>([])
-  const [isCartOpen, setIsCartOpen] = useState(false)
-  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false)
+  const cartDrawer = useToggle(false)
+  const mobileFilter = useToggle(false)
 
   // Cart functions
   const addToCart = useCallback((product: Product) => {
@@ -57,8 +59,8 @@ function App() {
         return [...prevCart, { product, quantity: 1 }]
       }
     })
-    setIsCartOpen(true) // Open cart drawer when item is added
-  }, [])
+    cartDrawer.open() // Open cart drawer when item is added
+  }, [cartDrawer])
 
   const removeFromCart = useCallback((productId: string) => {
     setCart((prevCart) =>
@@ -92,21 +94,17 @@ function App() {
     }, 0)
   }, [cart])
 
+  // Reset filters when category changes
+  useEffect(() => {
+    setFilters({
+      selectedColors: [],
+      priceRange: { min: minPrice, max: maxPrice },
+    })
+  }, [activeCategory, minPrice, maxPrice])
+
   const handleCategoryChange = (slug: Category['slug']) => {
     setIsLoading(true)
     setActiveCategory(slug)
-
-    // Reset filters when category changes
-    const newCategoryProducts = products.filter((p) => p.category === slug)
-    if (newCategoryProducts.length > 0) {
-      const prices = newCategoryProducts.map((p) => p.discountPrice || p.price)
-      const min = Math.floor(Math.min(...prices))
-      const max = Math.ceil(Math.max(...prices))
-      setFilters({
-        selectedColors: [],
-        priceRange: { min, max },
-      })
-    }
 
     // Simulate loading for smooth UX
     setTimeout(() => {
@@ -125,23 +123,11 @@ function App() {
   const handleClearFilters = () => {
     setFilters({
       selectedColors: [],
-      priceRange: {
-        min: Math.floor(
-          Math.min(...categoryProducts.map((p) => p.discountPrice || p.price)),
-        ),
-        max: Math.ceil(
-          Math.max(...categoryProducts.map((p) => p.discountPrice || p.price)),
-        ),
-      },
+      priceRange: { min: minPrice, max: maxPrice },
     })
   }
 
   const currentCategory = categories.find((cat) => cat.slug === activeCategory)
-
-  // Filter products by category first
-  const categoryProducts = products.filter(
-    (product) => product.category === activeCategory,
-  )
 
   // Then apply color and price filters
   const filteredProducts = useMemo(() => {
@@ -194,7 +180,7 @@ function App() {
         activeCategory={activeCategory}
         onCategoryChange={handleCategoryChange}
         cartItemCount={cartItemCount}
-        onCartClick={() => setIsCartOpen(true)}
+        onCartClick={cartDrawer.open}
       />
 
       <main className="container mx-auto px-4 py-8">
@@ -202,7 +188,7 @@ function App() {
         {currentCategory && (
           <CategoryHeader
             category={currentCategory}
-            onFilterClick={() => setIsMobileFilterOpen(true)}
+            onFilterClick={mobileFilter.open}
           />
         )}
 
@@ -229,8 +215,8 @@ function App() {
                 onFilterChange={handleFilterChange}
                 selectedColors={filters.selectedColors}
                 priceRange={filters.priceRange}
-                isOpen={isMobileFilterOpen}
-                onClose={() => setIsMobileFilterOpen(false)}
+                isOpen={mobileFilter.isOpen}
+                onClose={mobileFilter.close}
               />
             </div>
 
@@ -274,8 +260,8 @@ function App() {
 
       {/* Cart Drawer */}
       <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
+        isOpen={cartDrawer.isOpen}
+        onClose={cartDrawer.close}
         cart={cart}
         onRemove={removeFromCart}
         onUpdateQuantity={updateQuantity}

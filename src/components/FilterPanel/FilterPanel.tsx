@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { usePriceRange } from '../../hooks/filters/usePriceRange'
 import type { Product, FilterState } from '../../types'
 
 interface FilterPanelProps {
@@ -14,24 +14,14 @@ const FilterPanel = ({
   selectedColors,
   priceRange,
 }: FilterPanelProps) => {
-  const [absoluteMin, setAbsoluteMin] = useState(0)
-  const [absoluteMax, setAbsoluteMax] = useState(1000)
+  // Calculate min and max prices from products using usePriceRange hook
+  const { minPrice: absoluteMin, maxPrice: absoluteMax } =
+    usePriceRange(products)
 
   // Extract all unique colors from products
   const availableColors = Array.from(
     new Set(products.flatMap((product) => product.color)),
   ).sort()
-
-  // Calculate min and max prices from products
-  useEffect(() => {
-    if (products.length > 0) {
-      const prices = products.map((p) => p.discountPrice || p.price)
-      const min = Math.floor(Math.min(...prices))
-      const max = Math.ceil(Math.max(...prices))
-      setAbsoluteMin(min)
-      setAbsoluteMax(max)
-    }
-  }, [products])
 
   const handleColorToggle = (color: string) => {
     const newColors = selectedColors.includes(color)
@@ -116,14 +106,6 @@ const FilterPanel = ({
           {availableColors.map((color) => {
             const isSelected = selectedColors.includes(color)
             const colorStyle = getColorStyle(color)
-            const isLight = [
-              'white',
-              'beige',
-              'tan',
-              'yellow',
-              'gold',
-              'silver',
-            ].includes(color.toLowerCase())
 
             return (
               <button

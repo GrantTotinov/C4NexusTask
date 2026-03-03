@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
+import { useToggle } from '../../hooks/ui/useToggle'
 import type { SortOption, SortOptionConfig } from '../../types'
 
 interface SortDropdownProps {
@@ -15,7 +16,7 @@ const sortOptions: SortOptionConfig[] = [
 ]
 
 const SortDropdown = ({ currentSort, onSortChange }: SortDropdownProps) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const dropdown = useToggle(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const currentOption = sortOptions.find((opt) => opt.value === currentSort)
@@ -27,17 +28,17 @@ const SortDropdown = ({ currentSort, onSortChange }: SortDropdownProps) => {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        setIsOpen(false)
+        dropdown.close()
       }
     }
 
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+  }, [dropdown])
 
   const handleSortSelect = (sort: SortOption) => {
     onSortChange(sort)
-    setIsOpen(false)
+    dropdown.close()
   }
 
   return (
@@ -50,13 +51,13 @@ const SortDropdown = ({ currentSort, onSortChange }: SortDropdownProps) => {
       </label>
       <button
         id="sort-dropdown"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={dropdown.toggle}
         className="w-full sm:w-64 flex items-center justify-between px-4 py-2.5 bg-white border border-gray-300 rounded-lg hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors"
       >
         <span className="text-gray-900">{currentOption?.label}</span>
         <svg
           className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
-            isOpen ? 'rotate-180' : ''
+            dropdown.isOpen ? 'rotate-180' : ''
           }`}
           fill="none"
           strokeLinecap="round"
@@ -69,7 +70,7 @@ const SortDropdown = ({ currentSort, onSortChange }: SortDropdownProps) => {
         </svg>
       </button>
 
-      {isOpen && (
+      {dropdown.isOpen && (
         <div className="absolute z-10 w-full sm:w-64 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden">
           {sortOptions.map((option) => (
             <button

@@ -1,4 +1,3 @@
-import React from 'react'
 import FilterPanel from '../FilterPanel/FilterPanel'
 import type { Product, FilterState } from '../../types'
 
