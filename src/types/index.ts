@@ -8,6 +8,7 @@ export interface Product {
   image: string
   category: 'bags' | 'shoes' | 'accessories' | 'suits'
   color: string[] // Array of colors
+  materials: string[] // Array of materials (e.g., leather, cotton, polyester)
   rating: number // 1 to 5
 }
 
@@ -22,6 +23,7 @@ export interface Category {
 // Filter state for managing active filters
 export interface FilterState {
   selectedColors: string[]
+  selectedMaterials: string[]
   priceRange: {
     min: number
     max: number

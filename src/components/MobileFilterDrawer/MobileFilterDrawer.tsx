@@ -5,6 +5,7 @@ interface MobileFilterDrawerProps {
   products: Product[]
   onFilterChange: (filters: FilterState) => void
   selectedColors: string[]
+  selectedMaterials: string[]
   priceRange: { min: number; max: number }
   isOpen: boolean
   onClose: () => void
@@ -14,6 +15,7 @@ const MobileFilterDrawer = ({
   products,
   onFilterChange,
   selectedColors,
+  selectedMaterials,
   priceRange,
   isOpen,
   onClose,
@@ -23,12 +25,12 @@ const MobileFilterDrawer = ({
       {/* Drawer Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 lg:hidden" // Overlay remains clickable, no background color
+          className="fixed inset-0 bg-black/20 z-40 lg:hidden"
           onClick={onClose}
         />
       )}
 
-      {/* Drawer - covers full screen on mobile */}
+      {/* Drawer - covers full screen on mobile & tablet */}
       <div
         className={`fixed top-0 left-0 h-screen w-screen bg-white z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
@@ -61,6 +63,7 @@ const MobileFilterDrawer = ({
             products={products}
             onFilterChange={onFilterChange}
             selectedColors={selectedColors}
+            selectedMaterials={selectedMaterials}
             priceRange={priceRange}
           />
         </div>

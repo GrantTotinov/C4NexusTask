@@ -42,6 +42,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400',
     category: 'bags',
     color: ['black', 'brown'],
+    materials: ['leather'],
     rating: 4.8,
   },
   {
@@ -52,6 +53,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
     category: 'bags',
     color: ['beige', 'gray'],
+    materials: ['canvas'],
     rating: 4.5,
   },
   {
@@ -63,6 +65,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400',
     category: 'bags',
     color: ['red', 'pink', 'black'],
+    materials: ['leather', 'synthetic'],
     rating: 4.3,
   },
   {
@@ -73,6 +76,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
     category: 'bags',
     color: ['black', 'blue', 'gray'],
+    materials: ['nylon', 'polyester'],
     rating: 4.7,
   },
   {
@@ -84,6 +88,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=400',
     category: 'bags',
     color: ['gold', 'silver', 'black'],
+    materials: ['satin', 'leather'],
     rating: 4.6,
   },
   {
@@ -94,6 +99,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400',
     category: 'bags',
     color: ['brown', 'black'],
+    materials: ['leather', 'canvas'],
     rating: 4.9,
   },
   {
@@ -105,6 +111,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400',
     category: 'bags',
     color: ['burgundy', 'brown', 'black'],
+    materials: ['nylon', 'synthetic'],
     rating: 4.4,
   },
   {
@@ -115,6 +122,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400',
     category: 'bags',
     color: ['white', 'beige', 'pink'],
+    materials: ['leather', 'canvas'],
     rating: 4.2,
   },
   {
@@ -126,6 +134,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=400',
     category: 'bags',
     color: ['brown', 'black'],
+    materials: ['satin', 'suede'],
     rating: 4.7,
   },
   {
@@ -136,6 +145,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400',
     category: 'bags',
     color: ['black', 'green', 'blue'],
+    materials: ['polyester', 'suede'],
     rating: 4.1,
   },
   {
@@ -147,6 +157,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400',
     category: 'bags',
     color: ['brown', 'beige', 'gray'],
+    materials: ['suede', 'polyester'],
     rating: 4.5,
   },
   {
@@ -157,6 +168,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
     category: 'bags',
     color: ['black', 'brown'],
+    materials: ['canvas', 'synthetic'],
     rating: 4.8,
   },
   {
@@ -168,6 +180,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=400',
     category: 'bags',
     color: ['black', 'pink', 'white'],
+    materials: ['suede', 'denim'],
     rating: 4.6,
   },
   {
@@ -178,6 +191,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400',
     category: 'bags',
     color: ['beige', 'brown'],
+    materials: ['synthetic'],
     rating: 4.3,
   },
   {
@@ -189,6 +203,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
     category: 'bags',
     color: ['black', 'gray', 'blue'],
+    materials: ['suede', 'satin'],
     rating: 4.7,
   },
   {
@@ -199,6 +214,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400',
     category: 'bags',
     color: ['black', 'green'],
+    materials: ['nylon'],
     rating: 4.4,
   },
   {
@@ -210,6 +226,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400',
     category: 'bags',
     color: ['red', 'black', 'brown'],
+    materials: ['suede', 'polyester'],
     rating: 4.5,
   },
   {
@@ -220,6 +237,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
     category: 'bags',
     color: ['black', 'blue', 'gray'],
+    materials: ['polyester'],
     rating: 4.2,
   },
   {
@@ -231,6 +249,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=400',
     category: 'bags',
     color: ['black', 'silver', 'red'],
+    materials: ['synthetic', 'satin'],
     rating: 4.0,
   },
   {
@@ -241,6 +260,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400',
     category: 'bags',
     color: ['brown', 'beige'],
+    materials: ['nylon', 'denim'],
     rating: 4.3,
   },
   {
@@ -252,6 +272,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
     category: 'bags',
     color: ['black'],
+    materials: ['suede', 'polyester'],
     rating: 4.6,
   },
   {
@@ -262,6 +283,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400',
     category: 'bags',
     color: ['brown', 'black', 'beige'],
+    materials: ['nylon', 'canvas'],
     rating: 4.5,
   },
   {
@@ -273,6 +295,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400',
     category: 'bags',
     color: ['black', 'pink', 'green'],
+    materials: ['satin', 'denim'],
     rating: 4.4,
   },
   {
@@ -283,6 +306,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=400',
     category: 'bags',
     color: ['black', 'white'],
+    materials: ['polyester', 'synthetic'],
     rating: 4.7,
   },
   {
@@ -294,6 +318,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400',
     category: 'bags',
     color: ['brown', 'gray', 'beige'],
+    materials: ['suede'],
     rating: 4.6,
   },
   {
@@ -304,6 +329,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
     category: 'bags',
     color: ['black', 'blue', 'red'],
+    materials: ['nylon'],
     rating: 4.2,
   },
   {
@@ -315,6 +341,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400',
     category: 'bags',
     color: ['black', 'brown', 'pink'],
+    materials: ['leather', 'satin'],
     rating: 4.5,
   },
   {
@@ -325,6 +352,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
     category: 'bags',
     color: ['black', 'gray'],
+    materials: ['synthetic'],
     rating: 4.1,
   },
   {
@@ -336,6 +364,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400',
     category: 'bags',
     color: ['black', 'brown'],
+    materials: ['leather', 'nylon'],
     rating: 4.8,
   },
   {
@@ -346,6 +375,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
     category: 'bags',
     color: ['black', 'blue', 'green', 'red'],
+    materials: ['suede', 'satin'],
     rating: 3.9,
   },
   {
@@ -357,6 +387,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=400',
     category: 'bags',
     color: ['red', 'black', 'white'],
+    materials: ['suede', 'polyester'],
     rating: 4.6,
   },
   {
@@ -367,6 +398,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400',
     category: 'bags',
     color: ['black', 'gray', 'beige'],
+    materials: ['polyester', 'canvas'],
     rating: 4.7,
   },
   {
@@ -378,6 +410,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400',
     category: 'bags',
     color: ['silver', 'gold'],
+    materials: ['metal'],
     rating: 4.3,
   },
   {
@@ -388,6 +421,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
     category: 'bags',
     color: ['green', 'brown'],
+    materials: ['suede', 'nylon'],
     rating: 4.0,
   },
   {
@@ -399,6 +433,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400',
     category: 'bags',
     color: ['black'],
+    materials: ['polyester'],
     rating: 4.4,
   },
   {
@@ -409,6 +444,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=400',
     category: 'bags',
     color: ['black', 'red', 'pink', 'blue'],
+    materials: ['leather'],
     rating: 4.2,
   },
   {
@@ -420,6 +456,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
     category: 'bags',
     color: ['brown'],
+    materials: ['nylon', 'leather'],
     rating: 4.8,
   },
   {
@@ -430,6 +467,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400',
     category: 'bags',
     color: ['clear', 'pink', 'black'],
+    materials: ['synthetic'],
     rating: 4.1,
   },
   {
@@ -441,6 +479,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400',
     category: 'bags',
     color: ['beige', 'brown', 'white'],
+    materials: ['synthetic'],
     rating: 4.5,
   },
   {
@@ -451,6 +490,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
     category: 'bags',
     color: ['black', 'gray'],
+    materials: ['suede'],
     rating: 4.9,
   },
 
@@ -464,6 +504,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=400',
     category: 'shoes',
     color: ['black', 'brown'],
+    materials: ['leather'],
     rating: 4.7,
   },
   {
@@ -474,6 +515,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
     category: 'shoes',
     color: ['white', 'black', 'blue'],
+    materials: ['synthetic'],
     rating: 4.8,
   },
   {
@@ -485,6 +527,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400',
     category: 'shoes',
     color: ['black', 'brown', 'burgundy'],
+    materials: ['rubber', 'leather'],
     rating: 4.6,
   },
   {
@@ -495,6 +538,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400',
     category: 'shoes',
     color: ['white', 'black', 'beige', 'navy'],
+    materials: ['canvas', 'leather'],
     rating: 4.3,
   },
   {
@@ -506,6 +550,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400',
     category: 'shoes',
     color: ['black', 'red', 'nude'],
+    materials: ['synthetic', 'suede'],
     rating: 4.5,
   },
   {
@@ -516,6 +561,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=400',
     category: 'shoes',
     color: ['brown', 'black', 'gray'],
+    materials: ['patent leather', 'suede'],
     rating: 4.9,
   },
   {
@@ -527,6 +573,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400',
     category: 'shoes',
     color: ['black', 'pink', 'beige', 'red'],
+    materials: ['leather', 'synthetic'],
     rating: 4.4,
   },
   {
@@ -537,6 +584,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
     category: 'shoes',
     color: ['white', 'black', 'red'],
+    materials: ['suede', 'synthetic'],
     rating: 4.7,
   },
   {
@@ -548,6 +596,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=400',
     category: 'shoes',
     color: ['brown', 'black', 'burgundy'],
+    materials: ['leather'],
     rating: 4.6,
   },
   {
@@ -558,6 +607,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1603487742131-4160ec999306?w=400',
     category: 'shoes',
     color: ['black', 'blue', 'pink', 'green'],
+    materials: ['patent leather'],
     rating: 4.0,
   },
   {
@@ -569,6 +619,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=400',
     category: 'shoes',
     color: ['black', 'gray', 'brown'],
+    materials: ['synthetic'],
     rating: 4.8,
   },
   {
@@ -579,6 +630,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1603487742131-4160ec999306?w=400',
     category: 'shoes',
     color: ['black', 'white', 'beige'],
+    materials: ['suede'],
     rating: 4.3,
   },
   {
@@ -590,6 +642,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=400',
     category: 'shoes',
     color: ['black', 'brown'],
+    materials: ['mesh', 'rubber'],
     rating: 4.7,
   },
   {
@@ -600,6 +653,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
     category: 'shoes',
     color: ['white', 'blue'],
+    materials: ['suede', 'canvas'],
     rating: 4.5,
   },
   {
@@ -611,6 +665,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400',
     category: 'shoes',
     color: ['black', 'gold', 'silver'],
+    materials: ['rubber', 'synthetic'],
     rating: 4.6,
   },
   {
@@ -621,6 +676,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
     category: 'shoes',
     color: ['gray', 'green', 'black'],
+    materials: ['leather'],
     rating: 4.8,
   },
   {
@@ -632,6 +688,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1603487742131-4160ec999306?w=400',
     category: 'shoes',
     color: ['beige', 'red', 'navy'],
+    materials: ['suede'],
     rating: 4.4,
   },
   {
@@ -642,6 +699,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=400',
     category: 'shoes',
     color: ['brown', 'black'],
+    materials: ['canvas', 'synthetic'],
     rating: 4.6,
   },
   {
@@ -653,6 +711,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=400',
     category: 'shoes',
     color: ['brown', 'beige', 'gray'],
+    materials: ['mesh', 'synthetic'],
     rating: 4.2,
   },
   {
@@ -663,6 +722,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
     category: 'shoes',
     color: ['white', 'red', 'blue'],
+    materials: ['rubber', 'leather'],
     rating: 4.7,
   },
   {
@@ -674,6 +734,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=400',
     category: 'shoes',
     color: ['black', 'brown'],
+    materials: ['canvas'],
     rating: 4.8,
   },
   {
@@ -684,6 +745,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=400',
     category: 'shoes',
     color: ['brown', 'navy', 'beige'],
+    materials: ['rubber'],
     rating: 4.3,
   },
   {
@@ -695,6 +757,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
     category: 'shoes',
     color: ['black', 'white', 'gray'],
+    materials: ['synthetic', 'mesh'],
     rating: 4.4,
   },
   {
@@ -705,6 +768,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1603487742131-4160ec999306?w=400',
     category: 'shoes',
     color: ['brown', 'black', 'gold'],
+    materials: ['synthetic'],
     rating: 4.1,
   },
   {
@@ -716,6 +780,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=400',
     category: 'shoes',
     color: ['brown', 'black'],
+    materials: ['suede', 'leather'],
     rating: 4.7,
   },
   {
@@ -726,6 +791,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400',
     category: 'shoes',
     color: ['black', 'gray', 'white'],
+    materials: ['mesh', 'rubber'],
     rating: 4.5,
   },
   {
@@ -737,6 +803,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400',
     category: 'shoes',
     color: ['black', 'red', 'navy'],
+    materials: ['rubber'],
     rating: 4.3,
   },
   {
@@ -747,6 +814,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
     category: 'shoes',
     color: ['black', 'blue', 'gray'],
+    materials: ['patent leather', 'synthetic'],
     rating: 4.6,
   },
   {
@@ -758,6 +826,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=400',
     category: 'shoes',
     color: ['brown', 'black'],
+    materials: ['canvas'],
     rating: 4.8,
   },
   {
@@ -768,6 +837,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1603487742131-4160ec999306?w=400',
     category: 'shoes',
     color: ['black', 'white', 'pink', 'blue'],
+    materials: ['leather', 'rubber'],
     rating: 4.2,
   },
   {
@@ -779,6 +849,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=400',
     category: 'shoes',
     color: ['black', 'brown'],
+    materials: ['patent leather', 'rubber'],
     rating: 4.5,
   },
   {
@@ -789,6 +860,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1603487742131-4160ec999306?w=400',
     category: 'shoes',
     color: ['blue', 'black', 'gray'],
+    materials: ['leather', 'suede'],
     rating: 4.0,
   },
   {
@@ -800,6 +872,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400',
     category: 'shoes',
     color: ['black', 'nude', 'red'],
+    materials: ['synthetic', 'mesh'],
     rating: 4.4,
   },
   {
@@ -810,6 +883,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
     category: 'shoes',
     color: ['black', 'red'],
+    materials: ['canvas', 'leather'],
     rating: 4.6,
   },
   {
@@ -821,6 +895,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=400',
     category: 'shoes',
     color: ['beige', 'gray', 'brown'],
+    materials: ['suede'],
     rating: 4.5,
   },
   {
@@ -831,6 +906,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1603487742131-4160ec999306?w=400',
     category: 'shoes',
     color: ['gray', 'brown', 'black'],
+    materials: ['canvas', 'mesh'],
     rating: 4.3,
   },
   {
@@ -842,6 +918,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=400',
     category: 'shoes',
     color: ['brown', 'black'],
+    materials: ['canvas'],
     rating: 4.7,
   },
   {
@@ -852,6 +929,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
     category: 'shoes',
     color: ['black', 'white', 'blue'],
+    materials: ['suede'],
     rating: 4.6,
   },
   {
@@ -863,6 +941,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400',
     category: 'shoes',
     color: ['black', 'nude', 'red'],
+    materials: ['rubber'],
     rating: 4.5,
   },
   {
@@ -873,6 +952,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
     category: 'shoes',
     color: ['white', 'blue', 'black'],
+    materials: ['mesh', 'rubber'],
     rating: 4.8,
   },
 
@@ -886,6 +966,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1627123424574-724758594e93?w=400',
     category: 'accessories',
     color: ['black', 'brown'],
+    materials: ['leather', 'plastic'],
     rating: 4.7,
   },
   {
@@ -896,6 +977,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400',
     category: 'accessories',
     color: ['gold', 'silver', 'black'],
+    materials: ['plastic', 'acrylic'],
     rating: 4.6,
   },
   {
@@ -907,6 +989,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400',
     category: 'accessories',
     color: ['blue', 'red', 'beige', 'pink'],
+    materials: ['silk', 'plastic'],
     rating: 4.5,
   },
   {
@@ -918,6 +1001,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',
     category: 'accessories',
     color: ['black', 'silver', 'gold'],
+    materials: ['leather', 'fabric'],
     rating: 4.8,
   },
   {
@@ -928,6 +1012,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1624222247344-550fb60583bb?w=400',
     category: 'accessories',
     color: ['black', 'brown'],
+    materials: ['leather'],
     rating: 4.4,
   },
   {
@@ -939,6 +1024,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400',
     category: 'accessories',
     color: ['black', 'navy', 'white', 'red'],
+    materials: ['plastic', 'metal'],
     rating: 4.2,
   },
   {
@@ -949,6 +1035,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=400',
     category: 'accessories',
     color: ['black', 'gray', 'navy', 'beige'],
+    materials: ['wool'],
     rating: 4.3,
   },
   {
@@ -960,6 +1047,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',
     category: 'accessories',
     color: ['brown', 'black'],
+    materials: ['wood', 'fabric'],
     rating: 4.9,
   },
   {
@@ -970,6 +1058,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400',
     category: 'accessories',
     color: ['black', 'brown', 'gold'],
+    materials: ['silk'],
     rating: 4.4,
   },
   {
@@ -981,6 +1070,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400',
     category: 'accessories',
     color: ['gray', 'beige', 'black'],
+    materials: ['silk'],
     rating: 4.8,
   },
   {
@@ -991,6 +1081,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1627123424574-724758594e93?w=400',
     category: 'accessories',
     color: ['black', 'silver'],
+    materials: ['metal'],
     rating: 4.5,
   },
   {
@@ -1002,6 +1093,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400',
     category: 'accessories',
     color: ['black', 'brown', 'gray'],
+    materials: ['wood', 'fabric'],
     rating: 4.6,
   },
   {
@@ -1012,6 +1104,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',
     category: 'accessories',
     color: ['black', 'blue', 'gray'],
+    materials: ['silk', 'metal'],
     rating: 4.7,
   },
   {
@@ -1023,6 +1116,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400',
     category: 'accessories',
     color: ['black', 'brown'],
+    materials: ['leather', 'plastic'],
     rating: 4.8,
   },
   {
@@ -1033,6 +1127,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1589756823695-278bc8f75c76?w=400',
     category: 'accessories',
     color: ['navy', 'red', 'black', 'burgundy'],
+    materials: ['silk', 'acrylic'],
     rating: 4.5,
   },
   {
@@ -1044,6 +1139,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400',
     category: 'accessories',
     color: ['black', 'brown'],
+    materials: ['leather'],
     rating: 4.4,
   },
   {
@@ -1054,6 +1150,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400',
     category: 'accessories',
     color: ['beige', 'black', 'white'],
+    materials: ['leather', 'fabric'],
     rating: 4.1,
   },
   {
@@ -1065,6 +1162,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1627123424574-724758594e93?w=400',
     category: 'accessories',
     color: ['brown', 'black'],
+    materials: ['plastic'],
     rating: 4.9,
   },
   {
@@ -1075,6 +1173,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400',
     category: 'accessories',
     color: ['black', 'red', 'pink'],
+    materials: ['plastic', 'silk'],
     rating: 4.3,
   },
   {
@@ -1086,6 +1185,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400',
     category: 'accessories',
     color: ['gray', 'beige', 'red', 'navy'],
+    materials: ['leather', 'fabric'],
     rating: 4.4,
   },
   {
@@ -1097,6 +1197,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',
     category: 'accessories',
     color: ['silver', 'gold', 'black'],
+    materials: ['wood'],
     rating: 4.7,
   },
   {
@@ -1107,6 +1208,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1624222247344-550fb60583bb?w=400',
     category: 'accessories',
     color: ['black', 'brown'],
+    materials: ['acrylic', 'plastic'],
     rating: 4.5,
   },
   {
@@ -1117,6 +1219,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400',
     category: 'accessories',
     color: ['black', 'red', 'blue'],
+    materials: ['silk'],
     rating: 4.0,
   },
   {
@@ -1128,6 +1231,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',
     category: 'accessories',
     color: ['black', 'pink', 'blue'],
+    materials: ['plastic', 'leather'],
     rating: 4.6,
   },
   {
@@ -1139,6 +1243,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400',
     category: 'accessories',
     color: ['black', 'brown', 'blue'],
+    materials: ['plastic'],
     rating: 4.7,
   },
   {
@@ -1149,6 +1254,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1589756823695-278bc8f75c76?w=400',
     category: 'accessories',
     color: ['black', 'navy', 'burgundy'],
+    materials: ['plastic', 'fabric'],
     rating: 4.2,
   },
   {
@@ -1160,6 +1266,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400',
     category: 'accessories',
     color: ['black', 'gray', 'brown'],
+    materials: ['acrylic', 'fabric'],
     rating: 4.5,
   },
   {
@@ -1170,6 +1277,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400',
     category: 'accessories',
     color: ['gray', 'brown', 'black'],
+    materials: ['fabric', 'wood'],
     rating: 4.3,
   },
   {
@@ -1180,6 +1288,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1627123424574-724758594e93?w=400',
     category: 'accessories',
     color: ['black', 'brown', 'navy'],
+    materials: ['plastic', 'wood'],
     rating: 4.4,
   },
   {
@@ -1191,6 +1300,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',
     category: 'accessories',
     color: ['silver', 'black'],
+    materials: ['plastic'],
     rating: 4.8,
   },
   {
@@ -1201,6 +1311,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400',
     category: 'accessories',
     color: ['black', 'blue', 'red'],
+    materials: ['acrylic'],
     rating: 4.5,
   },
   {
@@ -1212,6 +1323,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400',
     category: 'accessories',
     color: ['red', 'blue', 'green'],
+    materials: ['silk', 'plastic'],
     rating: 4.4,
   },
   {
@@ -1222,6 +1334,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1624222247344-550fb60583bb?w=400',
     category: 'accessories',
     color: ['brown', 'beige', 'black'],
+    materials: ['acrylic', 'wood'],
     rating: 4.3,
   },
   {
@@ -1233,6 +1346,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400',
     category: 'accessories',
     color: ['black', 'white', 'navy'],
+    materials: ['fabric', 'silk'],
     rating: 4.2,
   },
   {
@@ -1244,6 +1358,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',
     category: 'accessories',
     color: ['gold', 'silver'],
+    materials: ['wood'],
     rating: 5.0,
   },
   {
@@ -1254,6 +1369,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400',
     category: 'accessories',
     color: ['brown', 'black'],
+    materials: ['fabric'],
     rating: 4.6,
   },
   {
@@ -1264,6 +1380,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400',
     category: 'accessories',
     color: ['white', 'black', 'pink'],
+    materials: ['wood'],
     rating: 3.9,
   },
   {
@@ -1275,6 +1392,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1627123424574-724758594e93?w=400',
     category: 'accessories',
     color: ['silver', 'black'],
+    materials: ['wood'],
     rating: 4.4,
   },
   {
@@ -1285,6 +1403,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400',
     category: 'accessories',
     color: ['gold', 'silver', 'black'],
+    materials: ['fabric', 'leather'],
     rating: 4.5,
   },
   {
@@ -1296,6 +1415,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400',
     category: 'accessories',
     color: ['gray', 'black', 'burgundy'],
+    materials: ['metal', 'fabric'],
     rating: 4.3,
   },
 
@@ -1309,6 +1429,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['navy'],
+    materials: ['linen', 'wool'],
     rating: 4.8,
   },
   {
@@ -1319,6 +1440,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['gray'],
+    materials: ['wool'],
     rating: 4.7,
   },
   {
@@ -1330,6 +1452,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1621976498727-9e5d56476276?w=400',
     category: 'suits',
     color: ['black'],
+    materials: ['cashmere', 'cotton'],
     rating: 4.9,
   },
   {
@@ -1341,6 +1464,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['beige', 'white'],
+    materials: ['wool', 'tweed'],
     rating: 4.5,
   },
   {
@@ -1351,6 +1475,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['navy', 'gray'],
+    materials: ['polyester', 'silk'],
     rating: 4.8,
   },
   {
@@ -1362,6 +1487,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['navy', 'gray'],
+    materials: ['silk', 'cotton'],
     rating: 4.6,
   },
   {
@@ -1372,6 +1498,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['black', 'navy'],
+    materials: ['silk', 'cashmere'],
     rating: 4.7,
   },
   {
@@ -1383,6 +1510,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['navy', 'gray'],
+    materials: ['cashmere', 'cotton'],
     rating: 4.8,
   },
   {
@@ -1393,6 +1521,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['burgundy'],
+    materials: ['wool', 'tweed'],
     rating: 4.4,
   },
   {
@@ -1404,6 +1533,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['brown', 'gray'],
+    materials: ['polyester', 'tweed'],
     rating: 4.6,
   },
   {
@@ -1414,6 +1544,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1621976498727-9e5d56476276?w=400',
     category: 'suits',
     color: ['white'],
+    materials: ['polyester', 'silk'],
     rating: 4.7,
   },
   {
@@ -1425,6 +1556,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['gray', 'navy'],
+    materials: ['tweed'],
     rating: 4.5,
   },
   {
@@ -1435,6 +1567,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['burgundy', 'navy', 'black'],
+    materials: ['cashmere', 'wool'],
     rating: 4.8,
   },
   {
@@ -1446,6 +1579,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['gray'],
+    materials: ['cashmere', 'cotton'],
     rating: 4.6,
   },
   {
@@ -1457,6 +1591,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['navy', 'gray', 'black'],
+    materials: ['wool'],
     rating: 4.9,
   },
   {
@@ -1467,6 +1602,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['beige'],
+    materials: ['wool', 'cotton'],
     rating: 4.3,
   },
   {
@@ -1478,6 +1614,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1621976498727-9e5d56476276?w=400',
     category: 'suits',
     color: ['navy'],
+    materials: ['polyester', 'tweed'],
     rating: 4.8,
   },
   {
@@ -1488,6 +1625,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['gray', 'brown'],
+    materials: ['tweed'],
     rating: 4.7,
   },
   {
@@ -1499,6 +1637,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['navy', 'gray'],
+    materials: ['silk'],
     rating: 4.4,
   },
   {
@@ -1509,6 +1648,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['blue', 'beige'],
+    materials: ['polyester', 'cashmere'],
     rating: 4.2,
   },
   {
@@ -1520,6 +1660,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['black', 'navy'],
+    materials: ['polyester', 'cashmere'],
     rating: 4.8,
   },
   {
@@ -1530,6 +1671,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['brown'],
+    materials: ['polyester'],
     rating: 4.5,
   },
   {
@@ -1541,6 +1683,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1621976498727-9e5d56476276?w=400',
     category: 'suits',
     color: ['black'],
+    materials: ['cotton', 'polyester'],
     rating: 4.9,
   },
   {
@@ -1551,6 +1694,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['navy', 'gray'],
+    materials: ['linen', 'tweed'],
     rating: 4.6,
   },
   {
@@ -1562,6 +1706,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['brown', 'navy'],
+    materials: ['tweed', 'polyester'],
     rating: 4.4,
   },
   {
@@ -1572,6 +1717,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['navy', 'gray', 'black'],
+    materials: ['cashmere'],
     rating: 4.7,
   },
   {
@@ -1583,6 +1729,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['green'],
+    materials: ['cashmere'],
     rating: 4.3,
   },
   {
@@ -1593,6 +1740,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['black'],
+    materials: ['wool', 'cotton'],
     rating: 4.8,
   },
   {
@@ -1604,6 +1752,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['navy', 'gray'],
+    materials: ['linen', 'wool'],
     rating: 4.6,
   },
   {
@@ -1614,6 +1763,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['navy', 'gray'],
+    materials: ['cotton'],
     rating: 4.4,
   },
   {
@@ -1625,6 +1775,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['gray', 'brown'],
+    materials: ['linen', 'polyester'],
     rating: 4.5,
   },
   {
@@ -1635,6 +1786,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['blue'],
+    materials: ['silk'],
     rating: 4.6,
   },
   {
@@ -1646,6 +1798,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['black', 'navy'],
+    materials: ['cashmere'],
     rating: 4.9,
   },
   {
@@ -1657,6 +1810,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['beige', 'white'],
+    materials: ['linen'],
     rating: 4.3,
   },
   {
@@ -1667,6 +1821,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1621976498727-9e5d56476276?w=400',
     category: 'suits',
     color: ['black', 'navy'],
+    materials: ['wool', 'cotton'],
     rating: 4.7,
   },
   {
@@ -1678,6 +1833,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['gray'],
+    materials: ['wool'],
     rating: 4.7,
   },
   {
@@ -1688,6 +1844,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['gray', 'black'],
+    materials: ['wool', 'silk'],
     rating: 4.8,
   },
   {
@@ -1699,6 +1856,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=400',
     category: 'suits',
     color: ['gray', 'black'],
+    materials: ['wool'],
     rating: 4.6,
   },
   {
@@ -1709,6 +1867,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=400',
     category: 'suits',
     color: ['navy', 'gray'],
+    materials: ['cashmere'],
     rating: 4.4,
   },
   {
@@ -1720,6 +1879,7 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1621976498727-9e5d56476276?w=400',
     category: 'suits',
     color: ['navy', 'black'],
+    materials: ['cashmere', 'silk'],
     rating: 4.8,
   },
 ]

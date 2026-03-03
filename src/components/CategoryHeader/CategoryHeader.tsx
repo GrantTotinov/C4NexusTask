@@ -30,7 +30,7 @@ const CategoryHeader = ({ category, onFilterClick }: CategoryHeaderProps) => {
     window.addEventListener('scroll', handleScroll)
     handleScroll() // Check initial position
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [floating])
+  }, [floating.open, floating.close])
   return (
     <div className="mb-8" style={{ animation: 'fadeIn 0.5s ease-out' }}>
       {/* Breadcrumbs */}

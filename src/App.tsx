@@ -34,6 +34,7 @@ function App() {
 
   const [filters, setFilters] = useState<FilterState>({
     selectedColors: [],
+    selectedMaterials: [],
     priceRange: { min: minPrice, max: maxPrice },
   })
   const [sortOption, setSortOption] = useState<SortOption>('default')
@@ -100,6 +101,7 @@ function App() {
   useEffect(() => {
     setFilters({
       selectedColors: [],
+      selectedMaterials: [],
       priceRange: { min: minPrice, max: maxPrice },
     })
     setSearchQuery('')
@@ -130,6 +132,7 @@ function App() {
   const handleClearFilters = () => {
     setFilters({
       selectedColors: [],
+      selectedMaterials: [],
       priceRange: { min: minPrice, max: maxPrice },
     })
     setSearchQuery('')
@@ -137,7 +140,7 @@ function App() {
 
   const currentCategory = categories.find((cat) => cat.slug === activeCategory)
 
-  // Then apply color, price, and search filters
+  // Then apply color, price, materials, and search filters
   const filteredProducts = useMemo(() => {
     return categoryProducts.filter((product) => {
       // Search filter (by name and description)
@@ -151,13 +154,20 @@ function App() {
         filters.selectedColors.length === 0 ||
         product.color.some((color) => filters.selectedColors.includes(color))
 
+      // Materials filter
+      const materialsMatch =
+        filters.selectedMaterials.length === 0 ||
+        product.materials.some((material) =>
+          filters.selectedMaterials.includes(material),
+        )
+
       // Price filter
       const productPrice = product.discountPrice || product.price
       const priceMatch =
         productPrice >= filters.priceRange.min &&
         productPrice <= filters.priceRange.max
 
-      return searchMatch && colorMatch && priceMatch
+      return searchMatch && colorMatch && materialsMatch && priceMatch
     })
   }, [categoryProducts, filters, searchQuery])
 
@@ -208,26 +218,30 @@ function App() {
 
         {/* Main Content Area with Sidebar */}
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Desktop: Filter Sidebar (hidden on mobile) */}
+          {/* Desktop: Filter Sidebar with independent scroll */}
           <aside className="hidden lg:block lg:w-80 flex-shrink-0">
-            <FilterPanel
-              products={categoryProducts}
-              onFilterChange={handleFilterChange}
-              selectedColors={filters.selectedColors}
-              priceRange={filters.priceRange}
-            />
+            <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
+              <FilterPanel
+                products={categoryProducts}
+                onFilterChange={handleFilterChange}
+                selectedColors={filters.selectedColors}
+                selectedMaterials={filters.selectedMaterials}
+                priceRange={filters.priceRange}
+              />
+            </div>
           </aside>
 
           {/* Right: Products Section */}
           <div className="flex-1">
             {/* Mobile: Filter Drawer Button */}
 
-            {/* Mobile: Filter Drawer Button (само за мобилно) */}
-            <div className="block md:hidden">
+            {/* Mobile & Tablet: Filter Drawer Button */}
+            <div className="block lg:hidden">
               <MobileFilterDrawer
                 products={categoryProducts}
                 onFilterChange={handleFilterChange}
                 selectedColors={filters.selectedColors}
+                selectedMaterials={filters.selectedMaterials}
                 priceRange={filters.priceRange}
                 isOpen={mobileFilter.isOpen}
                 onClose={mobileFilter.close}

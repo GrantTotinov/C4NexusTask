@@ -5,6 +5,7 @@ interface FilterPanelProps {
   products: Product[]
   onFilterChange: (filters: FilterState) => void
   selectedColors: string[]
+  selectedMaterials: string[]
   priceRange: { min: number; max: number }
 }
 
@@ -12,6 +13,7 @@ const FilterPanel = ({
   products,
   onFilterChange,
   selectedColors,
+  selectedMaterials,
   priceRange,
 }: FilterPanelProps) => {
   // Calculate min and max prices from products using usePriceRange hook
@@ -23,6 +25,11 @@ const FilterPanel = ({
     new Set(products.flatMap((product) => product.color)),
   ).sort()
 
+  // Extract all unique materials from products
+  const availableMaterials = Array.from(
+    new Set(products.flatMap((product) => product.materials)),
+  ).sort()
+
   const handleColorToggle = (color: string) => {
     const newColors = selectedColors.includes(color)
       ? selectedColors.filter((c) => c !== color)
@@ -30,6 +37,19 @@ const FilterPanel = ({
 
     onFilterChange({
       selectedColors: newColors,
+      selectedMaterials,
+      priceRange,
+    })
+  }
+
+  const handleMaterialToggle = (material: string) => {
+    const newMaterials = selectedMaterials.includes(material)
+      ? selectedMaterials.filter((m) => m !== material)
+      : [...selectedMaterials, material]
+
+    onFilterChange({
+      selectedColors,
+      selectedMaterials: newMaterials,
       priceRange,
     })
   }
@@ -37,11 +57,13 @@ const FilterPanel = ({
   const clearFilters = () => {
     onFilterChange({
       selectedColors: [],
+      selectedMaterials: [],
       priceRange: { min: absoluteMin, max: absoluteMax },
     })
   }
 
-  const hasActiveFilters = selectedColors.length > 0
+  const hasActiveFilters =
+    selectedColors.length > 0 || selectedMaterials.length > 0
 
   // Capitalize first letter helper
   const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
@@ -133,6 +155,33 @@ const FilterPanel = ({
         </div>
       </div>
 
+      {/* Materials Filter */}
+      <div>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Materials</h3>
+        <div className="space-y-2">
+          {availableMaterials.map((material) => {
+            const isSelected = selectedMaterials.includes(material)
+
+            return (
+              <label
+                key={material}
+                className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
+              >
+                <input
+                  type="checkbox"
+                  checked={isSelected}
+                  onChange={() => handleMaterialToggle(material)}
+                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-600"
+                />
+                <span className="text-sm font-medium text-gray-700 flex-1">
+                  {capitalize(material)}
+                </span>
+              </label>
+            )
+          })}
+        </div>
+      </div>
+
       {/* Price Range Filter with Dual Slider */}
       <div>
         <h3 className="text-lg font-semibold text-gray-900 mb-4">
@@ -165,6 +214,7 @@ const FilterPanel = ({
                 if (value <= priceRange.max) {
                   onFilterChange({
                     selectedColors,
+                    selectedMaterials,
                     priceRange: { min: value, max: priceRange.max },
                   })
                 }
@@ -182,6 +232,7 @@ const FilterPanel = ({
                 if (value >= priceRange.min) {
                   onFilterChange({
                     selectedColors,
+                    selectedMaterials,
                     priceRange: { min: priceRange.min, max: value },
                   })
                 }
