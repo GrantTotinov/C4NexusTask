@@ -10,8 +10,14 @@ A fully functional Product Listing Page (PLP) built with React,TypeScript and Ta
 
 ## Demo
 
-
+PC Resolution
 https://github.com/user-attachments/assets/a0e82e97-2f44-4e41-a6e2-7b721fa795cd
+
+Tablet Resolution
+
+
+
+https://github.com/user-attachments/assets/a0a1470b-b048-4b8f-8f99-b033b3697b3d
 
 
 
