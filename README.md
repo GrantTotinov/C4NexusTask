@@ -14,13 +14,25 @@ PC Resolution
 
 https://github.com/user-attachments/assets/a0e82e97-2f44-4e41-a6e2-7b721fa795cd
 
-Tablet Resolution
+<div style="display: flex; gap: 20px; align-items: flex-start;">
 
-https://github.com/user-attachments/assets/a0a1470b-b048-4b8f-8f99-b033b3697b3d
+  <video src="https://github.com/user-attachments/assets/a0a1470b-b048-4b8f-8f99-b033b3697b3d"
+         height="500"
+         controls
+         loop
+         muted
+         playsinline>
+  </video>
 
-Smartphone Resolution
+  <video src="https://github.com/user-attachments/assets/2bdf4576-fff4-4ca1-91da-5fb3185b9293"
+         height="500"
+         controls
+         loop
+         muted
+         playsinline>
+  </video>
 
-https://github.com/user-attachments/assets/2bdf4576-fff4-4ca1-91da-5fb3185b9293
+</div>
 
 
 ### Features
