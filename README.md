@@ -14,25 +14,31 @@ PC Resolution
 
 https://github.com/user-attachments/assets/a0e82e97-2f44-4e41-a6e2-7b721fa795cd
 
-<div style="display: flex; gap: 20px; align-items: flex-start;">
 
-  <video src="https://github.com/user-attachments/assets/a0a1470b-b048-4b8f-8f99-b033b3697b3d"
-         height="500"
-         controls
-         loop
-         muted
-         playsinline>
-  </video>
+Tablets and Smartphones
 
-  <video src="https://github.com/user-attachments/assets/2bdf4576-fff4-4ca1-91da-5fb3185b9293"
-         height="500"
-         controls
-         loop
-         muted
-         playsinline>
-  </video>
-
-</div>
+<table style="border: none; border-collapse: collapse;">
+  <tr style="border: none;">
+    <td style="border: none; vertical-align: top;">
+      <video src="https://github.com/user-attachments/assets/a0a1470b-b048-4b8f-8f99-b033b3697b3d" 
+             height="500" 
+             controls 
+             loop 
+             muted 
+             playsinline>
+      </video>
+    </td>
+    <td style="border: none; vertical-align: top;">
+      <video src="https://github.com/user-attachments/assets/2bdf4576-fff4-4ca1-91da-5fb3185b9293" 
+             height="500" 
+             controls 
+             loop 
+             muted 
+             playsinline>
+      </video>
+    </td>
+  </tr>
+</table>
 
 
 ### Features
