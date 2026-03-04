@@ -192,52 +192,70 @@ const FilterPanel = ({
             <span>${priceRange.min}</span>
             <span>${priceRange.max}</span>
           </div>
-          <div className="relative h-12">
-            {/* Track */}
-            <div className="absolute top-5 left-0 right-0 h-2 bg-gray-200 rounded pointer-events-none" />
-            {/* Active range */}
+          <div className="relative h-10">
+            {/* Track background */}
+            <div className="absolute top-4 left-0 right-0 h-2 bg-gray-200 rounded pointer-events-none" />
+            {/* Active range highlight */}
             <div
-              className="absolute top-5 h-2 bg-blue-600 rounded pointer-events-none"
+              className="absolute top-4 h-2 bg-blue-600 rounded pointer-events-none"
               style={{
                 left: `${((priceRange.min - absoluteMin) / (absoluteMax - absoluteMin)) * 100}%`,
                 right: `${100 - ((priceRange.max - absoluteMin) / (absoluteMax - absoluteMin)) * 100}%`,
               }}
             />
-            {/* Min slider */}
+            {/* Min slider — pointer-events disabled on track, enabled only on thumb */}
             <input
               type="range"
               min={absoluteMin}
               max={absoluteMax}
               value={priceRange.min}
               onChange={(e) => {
-                const value = parseInt(e.target.value)
-                if (value <= priceRange.max) {
-                  onFilterChange({
-                    selectedColors,
-                    selectedMaterials,
-                    priceRange: { min: value, max: priceRange.max },
-                  })
-                }
+                const value = Math.min(parseInt(e.target.value), priceRange.max - 1)
+                onFilterChange({ selectedColors, selectedMaterials, priceRange: { min: value, max: priceRange.max } })
               }}
-              className="absolute w-full h-2 top-5 appearance-none bg-transparent cursor-pointer z-10 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-blue-600 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-blue-600 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:border-0"
+              className="absolute w-full top-3 appearance-none bg-transparent
+                pointer-events-none
+                [&::-webkit-slider-thumb]:pointer-events-auto
+                [&::-webkit-slider-thumb]:appearance-none
+                [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5
+                [&::-webkit-slider-thumb]:rounded-full
+                [&::-webkit-slider-thumb]:bg-white
+                [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-blue-600
+                [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-grab [&::-webkit-slider-thumb]:active:cursor-grabbing
+                [&::-moz-range-thumb]:pointer-events-auto
+                [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5
+                [&::-moz-range-thumb]:rounded-full
+                [&::-moz-range-thumb]:bg-white
+                [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-blue-600
+                [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:cursor-grab"
+              style={{ zIndex: 20 }}
             />
-            {/* Max slider */}
+            {/* Max slider — pointer-events disabled on track, enabled only on thumb */}
             <input
               type="range"
               min={absoluteMin}
               max={absoluteMax}
               value={priceRange.max}
               onChange={(e) => {
-                const value = parseInt(e.target.value)
-                if (value >= priceRange.min) {
-                  onFilterChange({
-                    selectedColors,
-                    selectedMaterials,
-                    priceRange: { min: priceRange.min, max: value },
-                  })
-                }
+                const value = Math.max(parseInt(e.target.value), priceRange.min + 1)
+                onFilterChange({ selectedColors, selectedMaterials, priceRange: { min: priceRange.min, max: value } })
               }}
-              className="absolute w-full h-2 top-5 appearance-none bg-transparent cursor-pointer z-20 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-blue-600 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-blue-600 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:border-0"
+              className="absolute w-full top-3 appearance-none bg-transparent
+                pointer-events-none
+                [&::-webkit-slider-thumb]:pointer-events-auto
+                [&::-webkit-slider-thumb]:appearance-none
+                [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5
+                [&::-webkit-slider-thumb]:rounded-full
+                [&::-webkit-slider-thumb]:bg-white
+                [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-blue-600
+                [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-grab [&::-webkit-slider-thumb]:active:cursor-grabbing
+                [&::-moz-range-thumb]:pointer-events-auto
+                [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5
+                [&::-moz-range-thumb]:rounded-full
+                [&::-moz-range-thumb]:bg-white
+                [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-blue-600
+                [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:cursor-grab"
+              style={{ zIndex: 30 }}
             />
           </div>
         </div>

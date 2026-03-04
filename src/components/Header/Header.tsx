@@ -17,9 +17,9 @@ const Header = ({
   return (
     <header className="sticky top-0 z-50 bg-neutral-950 shadow-2xl border-b border-amber-700/20">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 w-full">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center gap-3">
+          <div className="flex-shrink-0 flex items-center gap-3 md:w-auto w-auto justify-start">
             {/* Crown SVG */}
             <svg
               className="w-8 h-8 text-amber-400 flex-shrink-0"
@@ -36,7 +36,7 @@ const Header = ({
 
             {/* Brand name */}
             <div className="leading-tight">
-              <h1 className="text-lg font-light tracking-[0.25em] text-white uppercase">
+              <h1 className="text-lg font-light tracking-[0.25em] text-white uppercase text-center md:text-left">
                 ShopHub
               </h1>
               <div className="flex items-center gap-1.5 mt-0.5">
@@ -91,8 +91,8 @@ const Header = ({
         </div>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden pb-3">
-          <div className="flex flex-wrap gap-2">
+        <div className="md:hidden pb-3 flex flex-col items-center w-full">
+          <div className="flex flex-wrap gap-2 justify-center w-full">
             {categories.map((category) => (
               <button
                 key={category.id}
