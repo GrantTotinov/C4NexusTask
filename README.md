@@ -112,12 +112,16 @@ https://github.com/user-attachments/assets/a0e82e97-2f44-4e41-a6e2-7b721fa795cd
 
 ## Tech Stack
 
-- **React 19** with **TypeScript**
-- **Vite** — build tool and dev server
-- **Tailwind CSS v4** — utility-first styling
+| | |
+|---|---|
+| React | 19.2 |
+| TypeScript | 5.9 |
+| Vite | 7.3 |
+| Tailwind CSS | 4.2 |
+
 - **Custom hooks** — `useToggle`, `usePriceRange`, `useLocalStorage`
-- **Sample data** — static JSON-style TypeScript file (`src/data/products.ts`) with 160 products across 4 categories
-- No UI libraries, no pre-built templates, no e-commerce frameworks
+- **Sample data** — static TypeScript file (`src/data/products.ts`) with 160 products across 4 categories
+- No UI component libraries, no pre-built templates, no e-commerce frameworks
 
 ---
 
