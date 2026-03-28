@@ -37,7 +37,7 @@ const CartDrawer = ({
           </h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+            className="p-2 hover:bg-gray-100 rounded-lg transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
           >
             <svg
               className="w-6 h-6 text-gray-600"
@@ -96,7 +96,7 @@ const CartDrawer = ({
                     <div className="mt-1 flex items-center gap-2">
                       {item.product.discountPrice ? (
                         <>
-                          <span className="text-blue-600 font-bold text-sm">
+                          <span className="text-amber-700 font-bold text-sm">
                             ${item.product.discountPrice.toFixed(2)}
                           </span>
                           <span className="text-gray-400 line-through text-xs">
@@ -158,7 +158,7 @@ const CartDrawer = ({
                 ${cartTotal.toFixed(2)}
               </span>
             </div>
-            <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+            <button className="w-full bg-amber-600 text-white py-3 rounded-lg font-medium hover:bg-amber-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2">
               Proceed to Checkout
             </button>
           </div>

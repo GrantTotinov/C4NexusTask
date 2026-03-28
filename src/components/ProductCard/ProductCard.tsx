@@ -132,12 +132,12 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
         <button
           onClick={handleAddToCart}
           disabled={adding.isOpen || success.isOpen}
-          className={`w-full py-2 px-4 rounded-lg font-medium transition-colors duration-200 mt-auto ${
+          className={`w-full py-2 px-4 rounded-lg font-medium transition-colors duration-200 mt-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 ${
             success.isOpen
               ? 'bg-green-500 text-white'
               : adding.isOpen
                 ? 'bg-gray-400 text-white cursor-not-allowed'
-                : 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-amber-600 text-white hover:bg-amber-700'
           }`}
         >
           {success.isOpen ? (

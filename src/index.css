@@ -1,5 +1,25 @@
 @import 'tailwindcss';
 
+:root {
+  --surface: #f8fafc;
+  --text: #0f172a;
+  --brand-500: #f59e0b;
+  --brand-700: #b45309;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(245, 158, 11, 0.12),
+      transparent 38%
+    ),
+    var(--surface);
+  font-family: 'Segoe UI', 'Trebuchet MS', sans-serif;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

@@ -52,7 +52,7 @@ const SortDropdown = ({ currentSort, onSortChange }: SortDropdownProps) => {
       <button
         id="sort-dropdown"
         onClick={dropdown.toggle}
-        className="w-full sm:w-64 flex items-center justify-between px-4 py-2.5 bg-white border border-gray-300 rounded-lg hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors"
+        className="w-full sm:w-64 flex items-center justify-between px-4 py-2.5 bg-white border border-gray-300 rounded-lg hover:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors"
       >
         <span className="text-gray-900">{currentOption?.label}</span>
         <svg
@@ -78,7 +78,7 @@ const SortDropdown = ({ currentSort, onSortChange }: SortDropdownProps) => {
               onClick={() => handleSortSelect(option.value)}
               className={`w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors ${
                 currentSort === option.value
-                  ? 'bg-blue-50 text-blue-600 font-medium'
+                  ? 'bg-amber-50 text-amber-700 font-medium'
                   : 'text-gray-900'
               }`}
             >
@@ -86,7 +86,7 @@ const SortDropdown = ({ currentSort, onSortChange }: SortDropdownProps) => {
                 <span>{option.label}</span>
                 {currentSort === option.value && (
                   <svg
-                    className="w-5 h-5 text-blue-600"
+                    className="w-5 h-5 text-amber-600"
                     fill="none"
                     strokeLinecap="round"
                     strokeLinejoin="round"

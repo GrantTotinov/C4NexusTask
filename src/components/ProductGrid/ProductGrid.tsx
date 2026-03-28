@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import ProductCard from '../ProductCard/ProductCard'
 import type { Product } from '../../types'
 
@@ -8,42 +8,9 @@ interface ProductGridProps {
 }
 
 const ProductGrid = ({ products, onAddToCart }: ProductGridProps) => {
-  const [itemsPerRow, setItemsPerRow] = useState(4)
-  const rowsToShow = 5
-  const [visibleCount, setVisibleCount] = useState(itemsPerRow * rowsToShow)
+  const pageSize = 12
+  const [visibleCount, setVisibleCount] = useState(pageSize)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
-
-  // Determine items per row based on screen size
-  useEffect(() => {
-    const updateItemsPerRow = () => {
-      const width = window.innerWidth
-      if (width < 768) {
-        // Mobile: 2 columns
-        setItemsPerRow(2)
-      } else if (width < 1024) {
-        // Tablet: 2 columns
-        setItemsPerRow(2)
-      } else {
-        // Desktop: 4 columns
-        setItemsPerRow(4)
-      }
-    }
-
-    updateItemsPerRow()
-    window.addEventListener('resize', updateItemsPerRow)
-    return () => window.removeEventListener('resize', updateItemsPerRow)
-  }, [])
-
-  // Update visible count when itemsPerRow changes
-  useEffect(() => {
-    setVisibleCount(itemsPerRow * rowsToShow)
-  }, [itemsPerRow])
-
-  // Reset visible count when products change (e.g., category change)
-  useEffect(() => {
-    setVisibleCount(itemsPerRow * rowsToShow)
-    setIsLoadingMore(false)
-  }, [products, itemsPerRow])
 
   const visibleProducts = products.slice(0, visibleCount)
   const hasMore = visibleCount < products.length
@@ -52,7 +19,7 @@ const ProductGrid = ({ products, onAddToCart }: ProductGridProps) => {
     setIsLoadingMore(true)
     // Simulate loading delay for smooth UX
     setTimeout(() => {
-      setVisibleCount((prev) => prev + itemsPerRow * rowsToShow)
+      setVisibleCount((prev) => prev + pageSize)
       setIsLoadingMore(false)
     }, 600)
   }
@@ -60,7 +27,7 @@ const ProductGrid = ({ products, onAddToCart }: ProductGridProps) => {
   return (
     <div style={{ animation: 'fadeIn 0.5s ease-out' }}>
       {/* Product Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
         {visibleProducts.map((product, index) => (
           <div
             key={product.id}
@@ -74,36 +41,31 @@ const ProductGrid = ({ products, onAddToCart }: ProductGridProps) => {
 
         {/* Loading More Skeletons */}
         {isLoadingMore &&
-          Array.from({ length: Math.min(itemsPerRow * rowsToShow, 10) }).map(
-            (_, index) => (
-              <div
-                key={`skeleton-${index}`}
-                className="bg-white rounded-lg shadow-md overflow-hidden animate-pulse"
-              >
-                {/* Image skeleton */}
-                <div className="aspect-square bg-gray-200"></div>
+          Array.from({ length: Math.min(pageSize, 10) }).map((_, index) => (
+            <div
+              key={`skeleton-${index}`}
+              className="bg-white rounded-lg shadow-md overflow-hidden animate-pulse"
+            >
+              {/* Image skeleton */}
+              <div className="aspect-square bg-gray-200"></div>
 
-                {/* Content skeleton */}
-                <div className="p-4 space-y-3">
-                  <div className="h-5 bg-gray-200 rounded w-3/4"></div>
-                  <div className="space-y-2">
-                    <div className="h-4 bg-gray-200 rounded"></div>
-                    <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-                  </div>
-                  <div className="flex gap-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <div
-                        key={i}
-                        className="w-4 h-4 bg-gray-200 rounded"
-                      ></div>
-                    ))}
-                  </div>
-                  <div className="h-8 bg-gray-200 rounded w-1/2"></div>
-                  <div className="h-10 bg-gray-200 rounded"></div>
+              {/* Content skeleton */}
+              <div className="p-4 space-y-3">
+                <div className="h-5 bg-gray-200 rounded w-3/4"></div>
+                <div className="space-y-2">
+                  <div className="h-4 bg-gray-200 rounded"></div>
+                  <div className="h-4 bg-gray-200 rounded w-5/6"></div>
                 </div>
+                <div className="flex gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <div key={i} className="w-4 h-4 bg-gray-200 rounded"></div>
+                  ))}
+                </div>
+                <div className="h-8 bg-gray-200 rounded w-1/2"></div>
+                <div className="h-10 bg-gray-200 rounded"></div>
               </div>
-            ),
-          )}
+            </div>
+          ))}
       </div>
 
       {/* Load More Button */}
@@ -111,7 +73,7 @@ const ProductGrid = ({ products, onAddToCart }: ProductGridProps) => {
         <div className="flex justify-center">
           <button
             onClick={loadMore}
-            className="px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
+            className="px-8 py-3 bg-amber-600 text-white font-medium rounded-lg hover:bg-amber-700 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
           >
             Load More Products
           </button>
@@ -121,7 +83,7 @@ const ProductGrid = ({ products, onAddToCart }: ProductGridProps) => {
       {/* Loading More Indicator */}
       {isLoadingMore && (
         <div className="flex justify-center">
-          <div className="px-8 py-3 bg-gray-400 text-white font-medium rounded-lg cursor-not-allowed flex items-center gap-2">
+          <div className="px-8 py-3 bg-amber-400 text-white font-medium rounded-lg cursor-not-allowed flex items-center gap-2">
             <svg
               className="animate-spin h-5 w-5"
               xmlns="http://www.w3.org/2000/svg"

@@ -69,7 +69,7 @@ const Header = ({
           {/* Cart Button */}
           <button
             onClick={onCartClick}
-            className="relative p-2 hover:bg-white/10 rounded-lg transition-colors group"
+            className="relative p-2 hover:bg-white/10 rounded-lg transition-colors group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
           >
             <svg
               className="w-6 h-6 text-neutral-300 group-hover:text-amber-400 transition-colors"

@@ -114,7 +114,7 @@ const FilterPanel = ({
         {hasActiveFilters && (
           <button
             onClick={clearFilters}
-            className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+            className="text-sm text-amber-700 hover:text-amber-800 font-medium"
           >
             Clear All
           </button>
@@ -135,14 +135,14 @@ const FilterPanel = ({
                 onClick={() => handleColorToggle(color)}
                 className={`relative flex flex-col items-center gap-2 p-3 rounded-lg transition-all duration-200 ${
                   isSelected
-                    ? 'bg-blue-50 ring-2 ring-blue-600'
+                    ? 'bg-amber-50 ring-2 ring-amber-500'
                     : 'bg-gray-50 hover:bg-gray-100'
                 }`}
                 title={capitalize(color)}
               >
                 <div
                   className={`w-10 h-10 rounded-full ${
-                    isSelected ? 'ring-2 ring-blue-600 ring-offset-2' : ''
+                    isSelected ? 'ring-2 ring-amber-500 ring-offset-2' : ''
                   }`}
                   style={colorStyle}
                 />
@@ -171,7 +171,7 @@ const FilterPanel = ({
                   type="checkbox"
                   checked={isSelected}
                   onChange={() => handleMaterialToggle(material)}
-                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-600"
+                  className="w-4 h-4 text-amber-600 border-gray-300 rounded focus:ring-2 focus:ring-amber-500"
                 />
                 <span className="text-sm font-medium text-gray-700 flex-1">
                   {capitalize(material)}
@@ -197,7 +197,7 @@ const FilterPanel = ({
             <div className="absolute top-4 left-0 right-0 h-2 bg-gray-200 rounded pointer-events-none" />
             {/* Active range highlight */}
             <div
-              className="absolute top-4 h-2 bg-blue-600 rounded pointer-events-none"
+              className="absolute top-4 h-2 bg-amber-500 rounded pointer-events-none"
               style={{
                 left: `${((priceRange.min - absoluteMin) / (absoluteMax - absoluteMin)) * 100}%`,
                 right: `${100 - ((priceRange.max - absoluteMin) / (absoluteMax - absoluteMin)) * 100}%`,
@@ -210,8 +210,15 @@ const FilterPanel = ({
               max={absoluteMax}
               value={priceRange.min}
               onChange={(e) => {
-                const value = Math.min(parseInt(e.target.value), priceRange.max - 1)
-                onFilterChange({ selectedColors, selectedMaterials, priceRange: { min: value, max: priceRange.max } })
+                const value = Math.min(
+                  parseInt(e.target.value),
+                  priceRange.max - 1,
+                )
+                onFilterChange({
+                  selectedColors,
+                  selectedMaterials,
+                  priceRange: { min: value, max: priceRange.max },
+                })
               }}
               className="absolute w-full top-3 appearance-none bg-transparent
                 pointer-events-none
@@ -220,13 +227,13 @@ const FilterPanel = ({
                 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5
                 [&::-webkit-slider-thumb]:rounded-full
                 [&::-webkit-slider-thumb]:bg-white
-                [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-blue-600
+                [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-amber-500
                 [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-grab [&::-webkit-slider-thumb]:active:cursor-grabbing
                 [&::-moz-range-thumb]:pointer-events-auto
                 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5
                 [&::-moz-range-thumb]:rounded-full
                 [&::-moz-range-thumb]:bg-white
-                [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-blue-600
+                [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-amber-500
                 [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:cursor-grab"
               style={{ zIndex: 20 }}
             />
@@ -237,8 +244,15 @@ const FilterPanel = ({
               max={absoluteMax}
               value={priceRange.max}
               onChange={(e) => {
-                const value = Math.max(parseInt(e.target.value), priceRange.min + 1)
-                onFilterChange({ selectedColors, selectedMaterials, priceRange: { min: priceRange.min, max: value } })
+                const value = Math.max(
+                  parseInt(e.target.value),
+                  priceRange.min + 1,
+                )
+                onFilterChange({
+                  selectedColors,
+                  selectedMaterials,
+                  priceRange: { min: priceRange.min, max: value },
+                })
               }}
               className="absolute w-full top-3 appearance-none bg-transparent
                 pointer-events-none
@@ -247,13 +261,13 @@ const FilterPanel = ({
                 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5
                 [&::-webkit-slider-thumb]:rounded-full
                 [&::-webkit-slider-thumb]:bg-white
-                [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-blue-600
+                [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-amber-500
                 [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-grab [&::-webkit-slider-thumb]:active:cursor-grabbing
                 [&::-moz-range-thumb]:pointer-events-auto
                 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5
                 [&::-moz-range-thumb]:rounded-full
                 [&::-moz-range-thumb]:bg-white
-                [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-blue-600
+                [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-amber-500
                 [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:cursor-grab"
               style={{ zIndex: 30 }}
             />
